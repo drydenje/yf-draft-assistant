@@ -3,7 +3,7 @@
 // };
 
 function Home() {
-  return <div>Home is where</div>;
+  return <div>Home is where the</div>;
 }
 
 export default Home;

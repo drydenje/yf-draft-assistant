@@ -3,7 +3,7 @@
 // };
 
 function Home() {
-  return <div>Home</div>;
+  return <div>Home is</div>;
 }
 
 export default Home;

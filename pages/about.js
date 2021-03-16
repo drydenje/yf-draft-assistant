@@ -1,15 +1,15 @@
-import Head from "next/head";
+import Head from "next/Head";
 
-const Home = () => {
+const About = () => {
   return (
     <>
       <Head>
-        <title>Draft Assistant</title>
+        <title>Draft Assistant: About</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div>Home</div>
+      <div>About</div>
     </>
   );
 };
 
-export default Home;
+export default About;

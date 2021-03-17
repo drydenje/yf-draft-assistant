@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { formatMonth } from "@/format/date";
 
 const ScratchPad = ({ pokemon }) => {
   const router = useRouter();
@@ -8,13 +9,15 @@ const ScratchPad = ({ pokemon }) => {
     e.preventDefault();
     router.push("/");
   };
+  const month = formatMonth(new Date());
+
   return (
     <>
       <Head>
         <title>Code ScratchPad</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <h1>Code ScratchPad</h1>
+      <h1>Code ScratchPad: {month}</h1>
       <p>
         Just a place to keep next.js notes, as I develop. No real features here.
       </p>

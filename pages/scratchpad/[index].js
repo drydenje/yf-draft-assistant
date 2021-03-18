@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { formatMonth } from "@/format/date";
+import { formatMonth } from "@/Format/Date";
 
 const ScratchPad = ({ pokemon }) => {
   const router = useRouter();

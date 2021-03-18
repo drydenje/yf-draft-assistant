@@ -10,6 +10,7 @@ const ScratchPad = ({ pokemon }) => {
     router.push("/");
   };
   const month = formatMonth(new Date());
+  // console.log(".ENV:", process.env.HOST);
 
   return (
     <>

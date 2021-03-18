@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@/format/*": ["services/Format/*"]
+      "@/Format/*": ["services/Format/*"]
     }
   }
 }

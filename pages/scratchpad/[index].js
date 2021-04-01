@@ -46,15 +46,15 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
-  const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.index}`);
-  const pokemon = await res.json();
+// export async function getStaticProps({ params }) {
+//   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.index}`);
+//   const pokemon = await res.json();
 
-  return {
-    props: {
-      pokemon,
-    },
-  };
-}
+//   return {
+//     props: {
+//       pokemon,
+//     },
+//   };
+// }
 
 export default ScratchPad;

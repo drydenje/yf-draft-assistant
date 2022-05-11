@@ -2,7 +2,13 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@/Format/*": ["services/Format/*"]
+      "@/components/*": ["components/*"],
+      "@/context/*": ["context/*"],
+      "@/domain/*": ["domain/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/services/*": ["services/*"],
+      "@/Format/*": ["services/Format/*"],
+      "@/styles/*": ["styles/*"],
     }
   }
 }

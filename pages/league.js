@@ -1,9 +1,10 @@
 import Head from "next/head";
+import Link from "next/link";
 import FetchGraphQL from "@/services/Data/FetchGraphQL";
 
 const Home = ({ results }) => {
   const leagues = results.data.leagues;
-  // console.log(leagues);
+
   return (
     <>
       <Head>
@@ -13,8 +14,13 @@ const Home = ({ results }) => {
       <h1>Leagues</h1>
       {leagues &&
         leagues.map((league) => (
-          <div>
-            <h3>{league.name}</h3>
+          <div key={league.leagueId}>
+            <Link href="/league/[id]" as={`/league/${league.leagueId}`}>
+              <a>
+                <h3>{league.name}</h3>
+                <p>A description of the league</p>
+              </a>
+            </Link>
             <span>{league.leagueId}</span>
           </div>
         ))}
@@ -35,9 +41,6 @@ export const getServerSideProps = async () => {
    }`;
 
   const results = await FetchGraphQL(leaguesQuery);
-  // console.log(leagues);
-  const send = await results.data.leagues;
-  // console.log(send);
   // console.log(results);
   return { props: { results } };
 };

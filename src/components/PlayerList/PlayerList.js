@@ -1,7 +1,6 @@
 import React from "react";
 
 function PlayerList({ players }) {
-  console.log(players);
   return (
     <div>
       {players.map((player) => (

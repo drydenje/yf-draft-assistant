@@ -1,4 +1,3 @@
-import { userRouter } from "next/router";
 import FetchGraphQL from "@/services/Data/FetchGraphQL";
 
 const player = ({ player }) => {
@@ -22,13 +21,12 @@ export const getServerSideProps = async (context) => {
         yearID
         iH
       }
-      # basicPitchingStats {
-      #   year
-      #   ID
-      #   W
-      #   L
-      #   ERA
-      # }
+      basicPitchingStats {
+        yearID
+        W
+        L
+        ERA
+      }
     }
   }
   `;

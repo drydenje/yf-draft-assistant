@@ -6,7 +6,7 @@ const player = ({ player }) => {
   return (
     <div>
       <span>{player.nameFirst}</span> <span>{player.nameLast}</span>
-      <StatTable stats={player.basicBattingStats} />
+      <StatTable stats={player.basicBattingStats} playerID={player.playerID} />
     </div>
   );
 };

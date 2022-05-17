@@ -1,7 +1,4 @@
-const StatTable = ({ stats }) => {
-  // console.log(stats);
-  // console.log(Object.values(stats[0]));
-
+const StatTable = ({ stats, playerID }) => {
   return (
     <table>
       <thead>
@@ -12,17 +9,15 @@ const StatTable = ({ stats }) => {
         </tr>
       </thead>
       <tbody>
-        {stats.map((statline) => {
+        {stats.map((statline, lineIndex) => {
           return (
-            <tr key={statline.yearId}>
-              {Object.values(statline).map((value) => {
-                return <th key={value}>{value}</th>;
+            <tr key={`${statline.yearId} + ${lineIndex}`}>
+              {Object.values(statline).map((value, index) => {
+                return <th key={`${lineIndex}${index}${value}`}>{value}</th>;
               })}
             </tr>
           );
         })}
-        {/* <td>Indiana</td>
-          <td>Indianapolis</td> */}
       </tbody>
     </table>
   );

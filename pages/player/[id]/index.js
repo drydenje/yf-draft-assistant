@@ -1,10 +1,12 @@
 import FetchGraphQL from "@/services/Data/FetchGraphQL";
+import StatTable from "@/components/StatTable";
 
 const player = ({ player }) => {
-  console.log(player);
+  // console.log(player);
   return (
     <div>
       <span>{player.nameFirst}</span> <span>{player.nameLast}</span>
+      <StatTable stats={player.basicBattingStats} />
     </div>
   );
 };
@@ -32,7 +34,6 @@ export const getServerSideProps = async (context) => {
   `;
 
   const res = await FetchGraphQL(playerQuery);
-  console.log(res);
   const player = res.data.playerByID;
   return { props: { player } };
 };

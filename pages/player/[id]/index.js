@@ -21,7 +21,12 @@ export const getServerSideProps = async (context) => {
       height
       basicBattingStats {
         yearID
+        iG
+        iAB
         iH
+        i2B
+        i3B
+        iHR
       }
       basicPitchingStats {
         yearID

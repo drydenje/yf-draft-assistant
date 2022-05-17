@@ -1,5 +1,6 @@
 const StatTable = ({ stats }) => {
-  console.log(stats);
+  // console.log(stats);
+  // console.log(Object.values(stats[0]));
 
   return (
     <table>
@@ -11,11 +12,17 @@ const StatTable = ({ stats }) => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          {/* {stats.} */}
-          {/* <td>Indiana</td>
+        {stats.map((statline) => {
+          return (
+            <tr key={statline.yearId}>
+              {Object.values(statline).map((value) => {
+                return <th key={value}>{value}</th>;
+              })}
+            </tr>
+          );
+        })}
+        {/* <td>Indiana</td>
           <td>Indianapolis</td> */}
-        </tr>
       </tbody>
     </table>
   );

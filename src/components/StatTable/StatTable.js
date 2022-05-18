@@ -1,4 +1,6 @@
-const StatTable = ({ stats, playerID }) => {
+const StatTable = ({ stats }) => {
+  if (stats.length === 0) return null;
+
   return (
     <table>
       <thead>

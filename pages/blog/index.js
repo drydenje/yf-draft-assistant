@@ -9,9 +9,7 @@ const Blog = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div>Blog</div>
-      <Link href="/">
-        <a>Go Back Home</a>
-      </Link>
+      <Link href="/">Go Back Home</Link>
     </>
   );
 };

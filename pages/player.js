@@ -1,15 +1,16 @@
 import Head from "next/head";
 
-const Players = ({ players }) => {
+const Player = ({ player }) => {
+  const { name } = player;
   return (
     <>
       <Head>
-        <title>{players[0].name}'s Statistics</title>
+        <title>{name}'s Statistics</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
       <h1>Players</h1>
-      <h2>{players[0].name}</h2>
+      <h2>{name}</h2>
     </>
   );
 };
@@ -27,11 +28,13 @@ export async function getStaticProps() {
     },
   ];
 
+  const player = players[0];
+
   return {
     props: {
-      players,
+      player,
     },
   };
 }
 
-export default Players;
+export default Player;

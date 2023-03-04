@@ -16,10 +16,8 @@ const Home = ({ results }) => {
         leagues.map((league) => (
           <div key={league.leagueId}>
             <Link href="/league/[id]" as={`/league/${league.leagueId}`}>
-              <a>
-                <h3>{league.name}</h3>
-                <p>A description of the league</p>
-              </a>
+              <h3>{league.name}</h3>
+              <p>A description of the league</p>
             </Link>
             <span>{league.leagueId}</span>
           </div>

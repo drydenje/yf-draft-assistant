@@ -1,8 +1,8 @@
-import Home from "./index";
+import NavBar from "@/components/NavBar";
 
 export default {
-  title: "Pages/Home",
-  component: Home,
+  title: "Components/NavBar",
+  component: NavBar,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/7.0/react/writing-docs/docs-page
   tags: ["autodocs"],
   parameters: {

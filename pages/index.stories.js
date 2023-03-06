@@ -10,9 +10,3 @@ export default {
     layout: "fullscreen",
   },
 };
-
-export const Primary = {
-  args: {
-    primary: true,
-  },
-};

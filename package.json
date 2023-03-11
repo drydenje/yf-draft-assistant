@@ -19,7 +19,8 @@
     "graphql": "^15.5.0",
     "next": "^13.2.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-mlb-logos": "^1.1.2"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.0.0-beta.61",

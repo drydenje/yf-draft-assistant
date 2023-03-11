@@ -1,7 +1,7 @@
 import Home from "../../pages/index";
 
 export default {
-  title: "Pages/Home",
+  title: "Example/Home",
   component: Home,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/7.0/react/writing-docs/docs-page
   tags: ["autodocs"],

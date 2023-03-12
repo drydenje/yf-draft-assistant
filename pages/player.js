@@ -12,8 +12,8 @@ const Player = ({ player }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
-      <h1>Players</h1>
-      <h2>{name}</h2>
+      {/* <h1>Players</h1> */}
+      {/* <h2>{name}</h2> */}
       <Table />
     </>
   );

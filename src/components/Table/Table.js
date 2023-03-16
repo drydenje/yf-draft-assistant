@@ -171,19 +171,24 @@ const Table = () => {
           </tr>
         ))}
       </thead>
-      <tbody>
-        {/* <tr className="hover:bg-sky-700">
-          <td className="border border-slate-300">Indiana</td>
-          <td className="border border-slate-300">Indianapolis</td>
-        </tr>
-        <tr className="hover:bg-sky-700">
-          <td className="border border-slate-300">Ohio</td>
-          <td className="border border-slate-300">Columbus</td>
-        </tr>
-        <tr className="hover:bg-sky-700">
-          <td className="border border-slate-300">Michigan</td>
-          <td className="border border-slate-300">Detroit</td>
-        </tr> */}
+      <tbody {...getTableBodyProps()}>
+        {rows.map((row) => {
+          prepareRow(row);
+          return (
+            <tr {...row.getRowProps()} className="hover:bg-sky-700">
+              {row.cells.map((cell) => {
+                return (
+                  <td
+                    {...cell.getCellProps()}
+                    className="border border-slate-300"
+                  >
+                    {cell.render("Cell")}
+                  </td>
+                );
+              })}
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   );

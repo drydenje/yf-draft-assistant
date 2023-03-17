@@ -1,5 +1,5 @@
 import Head from "next/head";
-
+import Table from "@/components/Table";
 const About = () => {
   return (
     <>
@@ -8,6 +8,7 @@ const About = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div>About</div>
+      <Table />
     </>
   );
 };

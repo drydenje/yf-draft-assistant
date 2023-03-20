@@ -1,19 +1,19 @@
+import { useMemo } from "react";
 import Head from "next/head";
 import Table from "@/components/Table";
 
 const Player = ({ player }) => {
-  const { name } = player;
-  console.log(typeof name);
+  const { name } = useMemo(() => player);
+
   return (
     <>
       <Head>
         {/* Warning: A title element received an array with more than 1 element as children. */}
-        {/* <title>{name}'s Statistics</title> */}
+        <title>{name}'s Statistics</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-
-      {/* <h1>Players</h1> */}
-      {/* <h2>{name}</h2> */}
+      <h1>Players</h1>
+      <h2>{name}</h2>
       <Table />
     </>
   );

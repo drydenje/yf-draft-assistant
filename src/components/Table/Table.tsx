@@ -1,10 +1,16 @@
 // import styles from "./Table.module.css";
 import React from "react";
 import { useTable, useSortBy } from "react-table";
+interface Heading {
+    header: String,
+    accessor: String
+}
 
-const Table = ({ headings, stats }) => {
+// { Header: "Year", accessor: "yearID" },
+
+const Table = ({ headings: Heading[], stats: StatLine[] }) => {
+
   const columns = React.useMemo(() => headings, []);
-
   const data = React.useMemo(() => stats, []);
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =

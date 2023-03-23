@@ -8,7 +8,7 @@ const Home = ({ results }) => {
   return (
     <>
       <Head>
-        <title>Draft Assistant - Leauges</title>
+        <title>Draft Assistant - Leagues</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <h1>Leagues</h1>

@@ -23,10 +23,34 @@ const player = ({ player }) => {
     { Header: "GIDP", accessor: "iGIDP" },
   ];
   const pitcherHeadings = [
-    { Header: "Year", accessor: "yearID" },
+    { Header: "yearID", accessor: "yearID" },
+    { Header: "stint", accessor: "stint" },
+    { Header: "teamID", accessor: "teamID" },
+    { Header: "lgID ", accessor: "lgID " },
     { Header: "W", accessor: "W" },
     { Header: "L", accessor: "L" },
-    { Header: "ERA", accessor: "ERA" },     
+    { Header: "G", accessor: "G" },
+    { Header: "GS", accessor: "GS" },
+    { Header: "CG", accessor: "CG" },
+    { Header: "SHO", accessor: "SHO" },
+    { Header: "SV", accessor: "SV" },
+    { Header: "IPouts", accessor: "IPouts" },
+    { Header: "H", accessor: "H" },
+    { Header: "ER", accessor: "ER" },
+    { Header: "HR", accessor: "HR" },
+    { Header: "BB", accessor: "BB" },
+    { Header: "SO", accessor: "SO" },
+    { Header: "BAOpp", accessor: "BAOpp" },
+    { Header: "ERA", accessor: "ERA" },
+    { Header: "IBB", accessor: "IBB" },
+    { Header: "WP", accessor: "WP" },
+    { Header: "HBP", accessor: "HBP" },
+    { Header: "BK", accessor: "BK" },
+    { Header: "BFP", accessor: "BFP" },
+    { Header: "GF", accessor: "GF" },
+    { Header: "R", accessor: "R" },
+    { Header: "SH", accessor: "SH" },
+    { Header: "SF"    , accessor: "SF"     },
   ]
 
   return (
@@ -68,9 +92,33 @@ export const getServerSideProps = async (context) => {
       }
       basicPitchingStats {
         yearID
+        stint
+        teamID
+        lgID 
         W
         L
+        G
+        GS
+        CG
+        SHO
+        SV
+        IPouts
+        H
+        ER
+        HR
+        BB
+        SO
+        BAOpp
         ERA
+        IBB
+        WP
+        HBP
+        BK
+        BFP
+        GF
+        R
+        SH
+        SF
       }
     }
   }

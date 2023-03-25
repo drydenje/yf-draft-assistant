@@ -1,9 +1,11 @@
 import { useMemo } from "react";
+import { HeightInFeet } from "@/services/Format/Height";
 import Head from "next/head";
 import Table from "@/components/Table";
 
 const Player = ({ player }) => {
-  const { name } = useMemo(() => player);
+  const { name } = useMemo(() => player, []);
+  console.log("Height:", HeightInFeet(72));
   const headings = [
     { Header: "Year", accessor: "yearID" },
     { Header: "G", accessor: "iG" },
@@ -151,7 +153,6 @@ const Player = ({ player }) => {
   return (
     <>
       <Head>
-        {/* Warning: A title element received an array with more than 1 element as children. */}
         <title>{`${name}'s Statistics`}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>

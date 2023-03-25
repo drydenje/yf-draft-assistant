@@ -32,7 +32,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "pages/player.js", "pages/player/[id]/index.js"  ],
   "exclude": [
     "node_modules"
   ]

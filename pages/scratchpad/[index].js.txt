@@ -7,6 +7,42 @@
   "name": "graphql-baseball"
 }
 
+{
+  viewer {
+    login
+    repository(name: "yf-draft-assistant") {
+      id
+      issues(filterBy: {states: OPEN}, first: 10) {
+        edges {
+          node {
+            id
+            body
+            title
+            milestone {
+              title
+            }
+          }
+        }
+      }
+      milestones(first: 10) {
+        edges {
+          node {
+            id
+            title
+            progressPercentage
+            state
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
 
 import Head from "next/head";
 import Link from "next/link";

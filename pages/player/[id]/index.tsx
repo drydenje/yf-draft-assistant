@@ -58,7 +58,7 @@ const player = ({ player }) => {
       <p>
         <span>{player.nameFirst}</span> <span>{player.nameLast}</span>
       </p>
-      <p>
+      {/* <p>
         <span>
           Birthday: {player.birthYear}-{player.birthMonth}-{player.birthDay}
         </span>
@@ -119,7 +119,7 @@ const player = ({ player }) => {
       </p>
       <p>
         <span>bbrefID {player.bbrefID}</span>
-      </p>
+      </p> */}
 
       {player.basicBattingStats.length > 0 ? (
         <Table headings={batterHeadings} stats={player.basicBattingStats} />
@@ -136,29 +136,9 @@ export const getServerSideProps = async (context) => {
 query {
   playerByID(id: "${context.params.id}") {
     playerID
-    birthYear
-    birthMonth
-    birthDay
-    birthCountry
-    birthState
-    birthCity
-    deathYear
-    deathMonth
-    deathDay
-    deathCountry
-    deathState
-    deathCity
     nameFirst
     nameLast
-    nameGiven
-    weight
-    height
-    bats 
-    throws
-    debut
-    finalGame
-    retroID
-    bbrefID
+    
   
     basicBattingStats {
       yearID

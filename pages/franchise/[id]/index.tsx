@@ -1,7 +1,12 @@
 import FetchGraphQL from "@/services/Data/FetchGraphQL";
 import Table from "@/components/Table";
 
-const player = ({ player }) => {
+const franchise = ({ franchise }) => {
+  const svgName = franchise.franchName
+    .toLowerCase()
+    .replace(/ /g, '-')
+    .concat('-logo.svg');
+  console.log(svgName);
   const batterHeadings = [
     { Header: "Year", accessor: "yearID" },
     { Header: "G", accessor: "iG" },
@@ -55,9 +60,9 @@ const player = ({ player }) => {
 
   return (
     <div>
-      {/* <p>
-        <span>{player.nameFirst}</span> <span>{player.nameLast}</span>
-      </p> */}
+      <p>
+        <span>{franchise.franchName}</span>
+      </p>
 {/* 
       {player.basicBattingStats.length > 0 ? (
         <Table headings={batterHeadings} stats={player.basicBattingStats} />
@@ -71,74 +76,20 @@ const player = ({ player }) => {
 };
 
 export const getServerSideProps = async (context) => {
-//   const playerQuery = `
-// query {
-//   playerByID(id: "${context.params.id}") {
-//     playerID
-//     nameFirst
-//     nameLast
-    
-  
-//     basicBattingStats {
-//       yearID
-//       iG
-//       iAB
-//       iR
-//       iH
-//       i2B
-//       i3B
-//       iHR
-//       iRBI
-//       iSB
-//       iCS
-//       iBB
-//       iSO
-//       iIBB
-//       iHBP
-//       iSH
-//       iSF
-//       iGIDP
-//     }
+    const franchiseQuery = `
+      query {
+        franchise(id: "${context.params.id}") {
+          franchID
+          franchName
+          active
+          NAassoc
+        }
+      }
+`;
 
-//     basicPitchingStats {
-//       yearID
-//       stint
-//       teamID
-//       lgID 
-//       W
-//       L
-//       G
-//       GS
-//       CG
-//       SHO
-//       SV
-//       IPouts
-//       H
-//       ER
-//       HR
-//       BB
-//       SO
-//       BAOpp
-//       ERA
-//       IBB
-//       WP
-//       HBP
-//       BK
-//       BFP
-//       GF
-//       R
-//       SH
-//       SF
-//     }
-//   }
-// }
-// `;
-
-//   const res = await FetchGraphQL(playerQuery);
-//   console.log(res);
-//   const player = res.data.playerByID;
-//   return { props: { player } };
-  return { props: { a:"nothing" } };
+  const res = await FetchGraphQL(franchiseQuery);
+  const franchise = res.data.franchise;
+  return { props: { franchise } };
 };
 
-export default player;
+export default franchise;

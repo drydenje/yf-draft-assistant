@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import FetchGraphQL from "@/services/Data/FetchGraphQL";
 import Table from "@/components/Table";
 
@@ -6,7 +7,9 @@ const franchise = ({ franchise }) => {
     .toLowerCase()
     .replace(/ /g, '-')
     .concat('-logo.svg');
-  console.log(svgName);
+  const logoPath = "/assets/logos/" + svgName;
+  const altText = "Logo of the " + franchise.franchName;
+
   const batterHeadings = [
     { Header: "Year", accessor: "yearID" },
     { Header: "G", accessor: "iG" },
@@ -63,6 +66,13 @@ const franchise = ({ franchise }) => {
       <p>
         <span>{franchise.franchName}</span>
       </p>
+      <Image 
+        src={logoPath}
+        alt={altText}
+        width={200}
+        height={161.36}
+        priority
+      />
 {/* 
       {player.basicBattingStats.length > 0 ? (
         <Table headings={batterHeadings} stats={player.basicBattingStats} />

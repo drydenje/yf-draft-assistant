@@ -7,7 +7,7 @@ type TableData = {
       Header: string;
       accessor: string;
     }[],
-    stats: {
+    stats?: {
       yearID: number,
       iG: number,
       iAB: number,

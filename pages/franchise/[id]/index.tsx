@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import FetchGraphQL from "@/services/Data/FetchGraphQL";
 import Table from "@/components/Table";
-import { merge, keyBy, unionWith, isEqual } from 'lodash'
+import { unionWith, isEqual } from 'lodash'
 
 const franchise = ({ franchise }) => {
   const svgName = franchise.franchName

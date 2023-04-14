@@ -1,5 +1,6 @@
 // import styles from "./Table.module.css";
 import React from "react";
+import { useRouter } from 'next/router';
 import { useTable, useSortBy } from "react-table";
 
 type TableData = {
@@ -7,7 +8,7 @@ type TableData = {
       Header: string;
       accessor: string;
     }[],
-    stats: {
+    stats?: {
       yearID: number,
       iG: number,
       iAB: number,
@@ -32,9 +33,17 @@ type TableData = {
 const Table = ({ headings, stats }: TableData) => {
   const columns = React.useMemo(() => headings, []);
   const data = React.useMemo(() => stats, []);
+  const router = useRouter();
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data }, useSortBy);
+
+  const handleRowClick = (row) => {
+    // navigate to playerID
+    const { playerID } = row.original;
+    router.push(`/player/${playerID}`)
+    // console.log(row.original.playerID);
+  }
 
   return (
     <table
@@ -62,7 +71,8 @@ const Table = ({ headings, stats }: TableData) => {
         {rows.map((row) => {
           prepareRow(row);
           return (
-            <tr {...row.getRowProps()} className="hover:bg-slate-300">
+            <tr {...row.getRowProps()} className="hover:bg-slate-300" 
+              onClick={()=>handleRowClick(row)}>
               {row.cells.map((cell) => {
                 return (
                   <td

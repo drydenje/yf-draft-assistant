@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import FetchGraphQL from "@/services/Data/FetchGraphQL";
 import Table from "@/components/Table";
+import { merge, keyBy, unionWith, isEqual } from 'lodash'
 
 const franchise = ({ franchise }) => {
   const svgName = franchise.franchName
@@ -10,6 +11,8 @@ const franchise = ({ franchise }) => {
   const logoPath = "/assets/logos/" + svgName;
   const altText = "Logo of the " + franchise.franchName;
   const { hitters, pitchers } = franchise.roster;
+  const roster = unionWith(hitters, pitchers, isEqual);
+
   const headings = [
     { Header: "nameFirst", accessor: "nameFirst" },
     { Header: "nameLast", accessor: "nameLast" },
@@ -45,19 +48,12 @@ const franchise = ({ franchise }) => {
         className="w-1/5 h-auto"
       />
 
-      {hitters.length > 0 ? (
+      {roster.length > 0 ? (
         <div>
-          <h2>Hitters</h2>
-          <Table headings={headings} stats={hitters} />
+          <h2>Roster</h2>
+          <Table headings={headings} stats={roster} />
         </div>
-      ) : null}
-      {pitchers.length > 0 ? (
-        <div>
-          <h2>Pitchers</h2>
-          <Table headings={headings} stats={pitchers} />
-        </div>
-      ) : null}
-      
+      ) : null}      
     </div>
   );
 };

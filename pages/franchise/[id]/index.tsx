@@ -69,9 +69,12 @@ const franchise = ({ franchise }) => {
       <Image 
         src={logoPath}
         alt={altText}
-        width={200}
-        height={161.36}
+        width={0}
+        height={0}
+        // width={200}
+        // height={161.36}
         priority
+        className="w-1/5 h-auto"
       />
 {/* 
       {player.basicBattingStats.length > 0 ? (

@@ -1,7 +1,7 @@
 import FetchGraphQL from '@/services/Data/FetchGraphQL'
 
 const Franchises = ({results}) => {
-  console.log(results);
+  // console.log(results);
 
   return (
     <div>Franchises</div>

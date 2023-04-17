@@ -1,30 +1,39 @@
 import FetchGraphQL from '@/services/Data/FetchGraphQL'
 
 const Franchises = ({results}) => {
-  // console.log(results);
-  // const leagues = results.map(team=>{
-
-  //   return team.franchID + team.league + team.division;
-  // })
   
-  let leagues = {}
-  for(const team of results) {
-    // console.log(team.franchName)
-    // const temp = {
-      // console.log(`${team.league}+${team.division}`);
-      const temp = {
-            franchID: team.franchID,
-            franchName: team.franchName,
-          }
-      leagues[team.league] = {...leagues, [team.division]: temp }
+  let leagues = 
+    {
+      "American": {
+          "West": [],
+          "East": [],
+          "Central": []
+      },
+      "National": {
+          "West": [],
+          "East": [],
+          "Central": []
+      }
+    }
 
-      // leagues = {...leagues, [team.division]:  {
-      //   [team.division]: temp
-      // }}
-    // }
-    // Object.assign(leagues, temp)
+  for(const team of results) {
+      const { league, division } = team;
+
+      leagues[team.league] = {
+        ...leagues[team.league], 
+        [team.division]: [ 
+          ...leagues[team.league][team.division],
+           {  
+              franchID: team.franchID,
+              franchName: team.franchName,
+            }
+          ]
+        }
   }
 
+  const test = Object.values(leagues);
+
+  console.log(test)
 
   // const leagues = {
   //   "American": {
@@ -38,10 +47,20 @@ const Franchises = ({results}) => {
   //     "West": ["ARI", "LAD", "SDP", "SFG", "COL"],
   //   }
   // }
-  console.log(leagues);
+  // console.log(leagues);
   
   return (
-    <div>Franchises</div>
+    <>
+      <h1>Franchises</h1>
+      <ul>
+        { }
+
+
+        <ul className="league">
+          
+        </ul>
+      </ul>
+    </>
   )
 }
 

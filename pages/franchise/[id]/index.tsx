@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import FetchGraphQL from "@/services/Data/FetchGraphQL";
 import Table from "@/components/Table";

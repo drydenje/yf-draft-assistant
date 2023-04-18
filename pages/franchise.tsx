@@ -1,65 +1,74 @@
+import Link from 'next/link'
 import FetchGraphQL from '@/services/Data/FetchGraphQL'
 
-const Franchises = ({results}) => {
+const Franchise = ({results}) => {
   
-  let leagues = 
-    {
+  let leagues = {
       "American": {
-          "West": [],
-          "East": [],
-          "Central": []
+        "East": [],
+        "Central": [],
+        "West": [],
       },
       "National": {
-          "West": [],
-          "East": [],
-          "Central": []
+        "East": [],
+        "Central": [],
+        "West": [],
       }
     }
 
   for(const team of results) {
-      const { league, division } = team;
+    const { league, division } = team;
 
-      leagues[team.league] = {
-        ...leagues[team.league], 
-        [team.division]: [ 
-          ...leagues[team.league][team.division],
-           {  
-              franchID: team.franchID,
-              franchName: team.franchName,
-            }
-          ]
-        }
+    leagues[team.league] = {
+      ...leagues[team.league], 
+      [team.division]: [ 
+        ...leagues[team.league][team.division],
+          {  
+            franchID: team.franchID,
+            franchName: team.franchName,
+          }
+        ]
+      }
   }
 
-  const test = Object.values(leagues);
-
-  console.log(test)
-
+  const listLeagues = Object.keys(leagues).map((leagueName, i) => 
+    <ul className="league" key={i}>
+        <li key={i}>
+          <h2>{leagueName}</h2>
+          <ul className="division">
+            { Object.keys(leagues[leagueName]).map((divisionName, i) => 
+            <li key={i}>
+              <h2>{divisionName}</h2>
+              <ul className="team">
+                { Object.values(leagues[leagueName][divisionName]).map((team, i) => 
+                  <li key={i}>
+                    <Link href={`/franchise/${team.franchID}`}>{team.franchName}</Link>
+                  </li> 
+                )}
+              </ul>
+            </li>)}
+          </ul>
+        </li>
+    </ul>)
+  
   // const leagues = {
-  //   "American": {
-  //     "East": [ "TOR", "NYY", "BAL"],
-  //     "Central": ["MIN", "CLE", "CHW", "DET", "KCR"],
-  //     "West": ["TEX", "ANA", "SEA", "HOU", "OAK"],
-  //   },
-  //   "National": {
-  //     "East":["ATL", "NYM", "FLA", "PHI", "WSN"],
-  //     "Central": ["MIL", "PIT", "CHC", "STL", "CIN"],
-  //     "West": ["ARI", "LAD", "SDP", "SFG", "COL"],
-  //   }
+    //   "American": {
+      //     "East": [ "TOR", "NYY", "BAL"],
+      //     "Central": ["MIN", "CLE", "CHW", "DET", "KCR"],
+      //     "West": ["TEX", "ANA", "SEA", "HOU", "OAK"],
+      //   },
+      //   "National": {
+        //     "East":["ATL", "NYM", "FLA", "PHI", "WSN"],
+        //     "Central": ["MIL", "PIT", "CHC", "STL", "CIN"],
+        //     "West": ["ARI", "LAD", "SDP", "SFG", "COL"],
+        //   }
   // }
   // console.log(leagues);
   
   return (
     <>
-      <h1>Franchises</h1>
-      <ul>
-        { }
-
-
-        <ul className="league">
-          
-        </ul>
-      </ul>
+      <h1 className="mainHeading">Franchises</h1>
+      { listLeagues }
     </>
   )
 }
@@ -84,4 +93,4 @@ export async function getStaticProps() {
   }
 }
 
-export default Franchises;
+export default Franchise;

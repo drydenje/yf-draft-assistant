@@ -2,7 +2,11 @@ import Link from 'next/link'
 import FetchGraphQL from '@/services/Data/FetchGraphQL'
 
 const Franchise = ({results}) => {
-  
+  interface Team {
+    franchID: String,
+    franchName: String,
+  }
+
   let leagues = {
       "American": {
         "East": [],
@@ -19,10 +23,10 @@ const Franchise = ({results}) => {
   for(const team of results) {
     const { league, division } = team;
 
-    leagues[team.league] = {
-      ...leagues[team.league], 
-      [team.division]: [ 
-        ...leagues[team.league][team.division],
+    leagues[league] = {
+      ...leagues[league], 
+      [division]: [ 
+        ...leagues[league][division],
           {  
             franchID: team.franchID,
             franchName: team.franchName,
@@ -40,7 +44,7 @@ const Franchise = ({results}) => {
             <li key={i}>
               <h2>{divisionName}</h2>
               <ul className="team">
-                { Object.values(leagues[leagueName][divisionName]).map((team, i) => 
+                { Object.values(leagues[leagueName][divisionName]).map((team: Team, i) => 
                   <li key={i}>
                     <Link href={`/franchise/${team.franchID}`}>{team.franchName}</Link>
                   </li> 
@@ -50,20 +54,6 @@ const Franchise = ({results}) => {
           </ul>
         </li>
     </ul>)
-  
-  // const leagues = {
-    //   "American": {
-      //     "East": [ "TOR", "NYY", "BAL"],
-      //     "Central": ["MIN", "CLE", "CHW", "DET", "KCR"],
-      //     "West": ["TEX", "ANA", "SEA", "HOU", "OAK"],
-      //   },
-      //   "National": {
-        //     "East":["ATL", "NYM", "FLA", "PHI", "WSN"],
-        //     "Central": ["MIL", "PIT", "CHC", "STL", "CIN"],
-        //     "West": ["ARI", "LAD", "SDP", "SFG", "COL"],
-        //   }
-  // }
-  // console.log(leagues);
   
   return (
     <>

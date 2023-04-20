@@ -125,7 +125,6 @@ const player = ({ player }) => {
         <Table 
           headings={batterHeadings} 
           stats={player.basicBattingStats} 
-          // onClickHandler={null}
         />
       ) : null}
 

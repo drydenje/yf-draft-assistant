@@ -2,35 +2,35 @@
 import React from "react";
 import { useTable, useSortBy } from "react-table";
 
-// type TableData = {
-//   htest: Function,
-// headings: {
-//   Header: string;
-//   accessor: string;
-// }[],
-// stats?: {
-//   yearID: number,
-//   iG: number,
-//   iAB: number,
-//   iR: number,
-//   iH: number,
-//   i2B: number,
-//   i3B: number,
-//   iHR: number,
-//   iRBI: number,
-//   iSB: number,
-//   iCS: number,
-//   iBB: number,
-//   iSO: number,
-//   iIBB: number,
-//   iHBP: number,
-//   iSH: number,
-//   iSF: number,
-//   iGIDP: number,
-// }[],
-// };
+type TableData = {
+  headings: {
+    Header: string;
+    accessor: string;
+  }[],
+  stats?: {
+    yearID: number,
+    iG: number,
+    iAB: number,
+    iR: number,
+    iH: number,
+    i2B: number,
+    i3B: number,
+    iHR: number,
+    iRBI: number,
+    iSB: number,
+    iCS: number,
+    iBB: number,
+    iSO: number,
+    iIBB: number,
+    iHBP: number,
+    iSH: number,
+    iSF: number,
+    iGIDP: number,
+  }[],
+  onClickHandler?: Function,
+};
 
-const Table = ({ headings, stats, onClickHandler }) => {
+const Table = ({ headings, stats, onClickHandler }: TableData) => {
   const columns = React.useMemo(() => headings, []);
   const data = React.useMemo(() => stats, []);
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =

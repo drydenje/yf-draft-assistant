@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import FetchGraphQL from "@/services/Data/FetchGraphQL";
 import Table from "@/components/Table";
 
@@ -53,11 +54,23 @@ const player = ({ player }) => {
     { Header: "SF", accessor: "SF" },
   ];
 
+  const handleRowClick = (row) => {
+    // navigate to playerID
+    const router = useRouter();
+    const { playerID } = row.original;
+    router.push(`/player/${playerID}`)
+  }
+
+  const hello = () => {
+    return "HEEEYYYYYY YOU GUYSSSS"
+  }
+
   return (
     <div>
       <p>
         <span>{player.nameFirst}</span> <span>{player.nameLast}</span>
       </p>
+      {/* <p><span>{this.hello}</span></p> */}
       {/* <p>
         <span>
           Birthday: {player.birthYear}-{player.birthMonth}-{player.birthDay}
@@ -122,10 +135,20 @@ const player = ({ player }) => {
       </p> */}
 
       {player.basicBattingStats.length > 0 ? (
-        <Table headings={batterHeadings} stats={player.basicBattingStats} />
+        <Table 
+          headings={batterHeadings} 
+          stats={player.basicBattingStats} 
+          onClickHandler={handleRowClick}
+          // htest={hello}
+        />
       ) : null}
       {player.basicPitchingStats.length > 0 ? (
-        <Table headings={pitcherHeadings} stats={player.basicPitchingStats} />
+        <Table 
+          headings={pitcherHeadings} 
+          stats={player.basicPitchingStats} 
+          onClickHandler={handleRowClick} 
+          // htest={hello}
+        />
       ) : null}
     </div>
   );

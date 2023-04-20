@@ -61,10 +61,6 @@ const player = ({ player }) => {
     router.push(`/player/${playerID}`)
   }
 
-  const hello = () => {
-    return "HEEEYYYYYY YOU GUYSSSS"
-  }
-
   return (
     <div>
       <p>
@@ -138,7 +134,7 @@ const player = ({ player }) => {
         <Table 
           headings={batterHeadings} 
           stats={player.basicBattingStats} 
-          onClickHandler={handleRowClick}
+          onClickHandler={null}
           // htest={hello}
         />
       ) : null}
@@ -146,7 +142,7 @@ const player = ({ player }) => {
         <Table 
           headings={pitcherHeadings} 
           stats={player.basicPitchingStats} 
-          onClickHandler={handleRowClick} 
+          // onClickHandler={handleRowClick} 
           // htest={hello}
         />
       ) : null}

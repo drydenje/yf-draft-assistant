@@ -5,6 +5,7 @@ import { unionWith, isEqual } from 'lodash'
 import { useRouter } from 'next/router';
 
 const franchise = ({ franchise }) => {
+  const router = useRouter();
   const svgName = franchise.franchName
     .toLowerCase()
     .replace(/ /g, '-')
@@ -35,14 +36,11 @@ const franchise = ({ franchise }) => {
     { Header: "bbrefID", accessor: "bbrefID" },
   ];
 
-  // const handleRowClick = (row) => {
-  //   // navigate to playerID
-  //   // const router = useRouter();
-  //   const { playerID } = row.original;
-  //   useRouter().push(`/player/${playerID}`)
-  //   // router.push(`/player/${playerID}`)
-  //   // console.log("ROW:", row.original.playerID)
-  // }
+  const handleRowClick = (row) => {
+    // navigate to playerID
+    const { playerID } = row.original;
+    router.push(`/player/${playerID}`)
+  }
   
   return (
     <div>
@@ -61,7 +59,7 @@ const franchise = ({ franchise }) => {
       {roster.length > 0 ? (
         <div>
           <h2>Roster</h2>
-          <Table headings={headings} stats={roster} />
+          <Table headings={headings} stats={roster} onClickHandler={handleRowClick}/>
         </div>
       ) : null}      
     </div>

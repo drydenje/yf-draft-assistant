@@ -2,8 +2,10 @@ import Image from 'next/image';
 import FetchGraphQL from "@/services/Data/FetchGraphQL";
 import Table from "@/components/Table";
 import { unionWith, isEqual } from 'lodash'
+import { useRouter } from 'next/router';
 
 const franchise = ({ franchise }) => {
+  const router = useRouter();
   const svgName = franchise.franchName
     .toLowerCase()
     .replace(/ /g, '-')
@@ -33,6 +35,12 @@ const franchise = ({ franchise }) => {
     { Header: "retroID", accessor: "retroID" },
     { Header: "bbrefID", accessor: "bbrefID" },
   ];
+
+  const handleRowClick = (row) => {
+    // navigate to playerID
+    const { playerID } = row.original;
+    router.push(`/player/${playerID}`)
+  }
   
   return (
     <div>
@@ -51,7 +59,7 @@ const franchise = ({ franchise }) => {
       {roster.length > 0 ? (
         <div>
           <h2>Roster</h2>
-          <Table headings={headings} stats={roster} />
+          <Table headings={headings} stats={roster} onClickHandler={handleRowClick}/>
         </div>
       ) : null}      
     </div>

@@ -1,49 +1,40 @@
 // import styles from "./Table.module.css";
 import React from "react";
-import { useRouter } from 'next/router';
 import { useTable, useSortBy } from "react-table";
 
 type TableData = {
-    headings: {
-      Header: string;
-      accessor: string;
-    }[],
-    stats?: {
-      yearID: number,
-      iG: number,
-      iAB: number,
-      iR: number,
-      iH: number,
-      i2B: number,
-      i3B: number,
-      iHR: number,
-      iRBI: number,
-      iSB: number,
-      iCS: number,
-      iBB: number,
-      iSO: number,
-      iIBB: number,
-      iHBP: number,
-      iSH: number,
-      iSF: number,
-      iGIDP: number,
-    }[]
-}
+  headings: {
+    Header: string;
+    accessor: string;
+  }[],
+  stats?: {
+    yearID: number,
+    iG: number,
+    iAB: number,
+    iR: number,
+    iH: number,
+    i2B: number,
+    i3B: number,
+    iHR: number,
+    iRBI: number,
+    iSB: number,
+    iCS: number,
+    iBB: number,
+    iSO: number,
+    iIBB: number,
+    iHBP: number,
+    iSH: number,
+    iSF: number,
+    iGIDP: number,
+  }[],
+  onClickHandler?: Function,
+};
 
-const Table = ({ headings, stats }: TableData) => {
+const Table = ({ headings, stats, onClickHandler=null }: TableData) => {
   const columns = React.useMemo(() => headings, []);
   const data = React.useMemo(() => stats, []);
-  const router = useRouter();
-
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data }, useSortBy);
-
-  const handleRowClick = (row) => {
-    // navigate to playerID
-    const { playerID } = row.original;
-    router.push(`/player/${playerID}`)
-    // console.log(row.original.playerID);
-  }
 
   return (
     <table
@@ -71,8 +62,11 @@ const Table = ({ headings, stats }: TableData) => {
         {rows.map((row) => {
           prepareRow(row);
           return (
-            <tr {...row.getRowProps()} className="hover:bg-slate-300" 
-              onClick={()=>handleRowClick(row)}>
+            <tr
+              {...row.getRowProps()}
+              className="hover:bg-slate-300"
+              onClick={() => (onClickHandler ? onClickHandler(row) : null)}
+            >
               {row.cells.map((cell) => {
                 return (
                   <td

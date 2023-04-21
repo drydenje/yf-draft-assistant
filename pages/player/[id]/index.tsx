@@ -122,10 +122,17 @@ const player = ({ player }) => {
       </p> */}
 
       {player.basicBattingStats.length > 0 ? (
-        <Table headings={batterHeadings} stats={player.basicBattingStats} />
+        <Table 
+          headings={batterHeadings} 
+          stats={player.basicBattingStats} 
+        />
       ) : null}
+
       {player.basicPitchingStats.length > 0 ? (
-        <Table headings={pitcherHeadings} stats={player.basicPitchingStats} />
+        <Table 
+          headings={pitcherHeadings} 
+          stats={player.basicPitchingStats} 
+        />
       ) : null}
     </div>
   );
@@ -196,7 +203,6 @@ query {
 `;
 
   const res = await FetchGraphQL(playerQuery);
-  console.log(res);
   const player = res.data.playerByID;
   return { props: { player } };
 };

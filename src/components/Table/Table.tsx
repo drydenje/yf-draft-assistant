@@ -30,7 +30,7 @@ type TableData = {
   onClickHandler?: Function,
 };
 
-const Table = ({ headings, stats, onClickHandler }: TableData) => {
+const Table = ({ headings, stats, onClickHandler=null }: TableData) => {
   const columns = React.useMemo(() => headings, []);
   const data = React.useMemo(() => stats, []);
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =

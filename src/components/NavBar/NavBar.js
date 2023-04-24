@@ -25,6 +25,18 @@ const NavBar = () => {
         </ul>
       </nav>
       <Button />
+      <h2
+        className={`text-4xl sm:text-6xl md:text-9xl text-center text-gray-800`}
+        // className={`${roboto.className} text-4xl sm:text-6xl md:text-9xl text-center text-gray-800`}
+      >
+        LIGHT MODE
+      </h2>
+      <h2
+        className={`text-4xl sm:text-6xl md:text-9xl text-center text-white `}
+        // className={`${roboto.className} text-4xl sm:text-6xl md:text-9xl text-center text-white `}
+      >
+        DARK MODE
+      </h2>
     </>
   );
 };

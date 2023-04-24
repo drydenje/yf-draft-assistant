@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply dark:bg-gray-800 bg-sky-500
+  }
+}
 
 img {
   /* min-height: 100%;

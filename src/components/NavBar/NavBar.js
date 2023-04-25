@@ -4,9 +4,9 @@ import styles from "./NavBar.module.css";
 
 const NavBar = () => {
   return (
-    <>
-      <nav className={styles.nav}>
-        <ul>
+    <div class="flex flex-row justify-between">
+      <nav>
+        <ul class="flex flex-row items-center list-none [&>li]: hover:bg-slate-400">
           <li>
             <Link href="/">Home</Link>
           </li>
@@ -25,7 +25,7 @@ const NavBar = () => {
         </ul>
       </nav>
       <Button />
-      <h2
+      {/* <h2
         className={`text-4xl sm:text-6xl md:text-9xl text-center text-gray-800`}
         // className={`${roboto.className} text-4xl sm:text-6xl md:text-9xl text-center text-gray-800`}
       >
@@ -36,8 +36,8 @@ const NavBar = () => {
         // className={`${roboto.className} text-4xl sm:text-6xl md:text-9xl text-center text-white `}
       >
         DARK MODE
-      </h2>
-    </>
+      </h2> */}
+    </div>
   );
 };
 

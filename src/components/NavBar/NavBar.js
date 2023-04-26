@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Button from "@/components/Button";
-import styles from "./NavBar.module.css";
+// import styles from "./NavBar.module.css";
 
 const NavBar = () => {
   return (

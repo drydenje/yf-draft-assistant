@@ -6,22 +6,18 @@ const NavBar = () => {
   return (
     <div class="flex flex-row justify-between">
       <nav>
-        <ul class="flex flex-row items-center list-none [&>li]: hover:bg-slate-400">
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/franchise">Franchises</Link>
-          </li>
-          <li>
-            <Link href="/league">Leagues</Link>
-          </li>
-          <li>
-            <Link href="/player">Players</Link>
-          </li>
-          <li>
-            <Link href="/about">About</Link>
-          </li>
+        <ul class="flex flex-row items-center list-none">
+          {[
+            ["Home", "/"],
+            ["Franchise", "/franchise"],
+            ["Leagues", "/league"],
+            ["Players", "/player"],
+            ["About", "/about"],
+          ].map(([title, url]) => (
+            <li class="text-xl mx-2 my-2 hover:underline">
+              <Link href={url}>{title}</Link>
+            </li>
+          ))}
         </ul>
       </nav>
       <Button />

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import DarkModeToggle from "@/components/DarkModeToggle";
 import styles from "./NavBar.module.css";
 
 const NavBar = () => {
@@ -17,6 +18,7 @@ const NavBar = () => {
           </li>
         ))}
       </ul>
+      <DarkModeToggle />
     </nav>
   );
 };

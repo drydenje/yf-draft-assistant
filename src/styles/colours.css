@@ -1,0 +1,10 @@
+:root {
+  /* Default theme */
+  --background: white;
+  --foreground: black;
+}
+
+[data-theme="dark"] {
+  --background: black;
+  --foreground: white;
+}

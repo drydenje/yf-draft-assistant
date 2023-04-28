@@ -1,6 +1,7 @@
 body {
   background-color: var(--background);
   color: var(--forground);
+  max-width: 100vw;
 }
 
 nav {

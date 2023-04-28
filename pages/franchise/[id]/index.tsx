@@ -53,7 +53,7 @@ const franchise = ({ franchise }) => {
         width={0}
         height={0}
         priority
-        className="w-1/5 h-auto"
+        // className="w-1/5 h-auto"
       />
 
       {roster.length > 0 ? (

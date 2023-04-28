@@ -12,7 +12,7 @@ const NavBar = () => {
           ["Players", "/player"],
           ["About", "/about"],
         ].map(([title, url]) => (
-          <li>
+          <li key={title.toLowerCase()}>
             <Link href={url}>{title}</Link>
           </li>
         ))}

@@ -23,7 +23,15 @@ const DarkModeToggle = () => {
     <>
       {/* <p>Current theme: {resolvedTheme.capital}</p> */}
       <button
-        onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}
+        onClick={(e) => {
+          // if the shift key is down, set the theme according to system preferences
+          if (e.shiftKey) {
+            setTheme("system");
+          } else {
+            // toggle the theme to the opposite option
+            setTheme(resolvedTheme === "light" ? "dark" : "light");
+          }
+        }}
       >
         {/* <span>Toggle Theme</span> */}
         <Image

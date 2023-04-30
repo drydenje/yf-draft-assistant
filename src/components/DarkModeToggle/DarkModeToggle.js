@@ -23,6 +23,7 @@ const DarkModeToggle = () => {
     <>
       {/* <p>Current theme: {resolvedTheme.capital}</p> */}
       <button
+        className={styles.button}
         onClick={(e) => {
           // if the shift key is down, set the theme according to system preferences
           if (e.shiftKey) {

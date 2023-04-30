@@ -9,9 +9,11 @@ nav {
   color: var(--forground);
 }
 
+nav a {
+  color: var(--forground);
+}
+
 img {
-  /* width: auto;
-  height: auto; */
   margin: 0;
   padding: 0;
 }

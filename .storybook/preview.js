@@ -1,12 +1,13 @@
+import { ThemeProvider } from "next-themes";
 import "../src/styles/globals.css";
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
   parameters: {
+    actions: { argTypesRegex: "^on[A-Z].*" },
     backgrounds: {
       default: "light",
     },
-    actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -14,6 +15,13 @@ const preview = {
       },
     },
   },
+  decorators: [
+    (Story) => (
+      <ThemeProvider theme="default">
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 };
 
 export default preview;

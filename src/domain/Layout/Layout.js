@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
     <div className={styles.container}>
       <NavBar />
       <Header />
-      <div className="bg-white dark:bg-slate-800">
+      <div>
         <main>{children}</main>
       </div>
     </div>

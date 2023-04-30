@@ -11,8 +11,27 @@ export default {
   },
 };
 
-export const Primary = {
+export const Default = {
+  args: {},
+  parameters: {
+    theme: "system",
+  },
+};
+
+export const LightTheme = {
   args: {
-    primary: true,
+    ...Default.args,
+  },
+  parameters: {
+    theme: "light",
+  },
+};
+
+export const DarkTheme = {
+  args: {
+    ...Default.args,
+  },
+  parameters: {
+    theme: "dark",
   },
 };

@@ -1,5 +1,19 @@
 import { ThemeProvider } from "next-themes";
+import "../src/styles/normalize.css";
 import "../src/styles/globals.css";
+import "../src/styles/colours.css";
+
+const theme = "default";
+
+const withTheme = (Story, context) => {
+  // const { theme } = context.parameters;
+  // const storyTheme = theme === "dark" ?
+  return (
+    <ThemeProvider theme={theme}>
+      <Story />
+    </ThemeProvider>
+  );
+};
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
@@ -15,13 +29,7 @@ const preview = {
       },
     },
   },
-  decorators: [
-    (Story) => (
-      <ThemeProvider theme="default">
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
+  decorators: [withTheme],
 };
 
 export default preview;

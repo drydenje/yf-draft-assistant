@@ -28,11 +28,11 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
 
   return getLayout(
     <ThemeProvider>
-      <Layout>
-        {/* <div className={montserrat.className}> */}
+      <div className={montserrat.className}>
+        <Layout>
           <Component {...pageProps}/>
-        {/* </div> */}
-      </Layout>
+        </Layout>
+      </div>
     </ThemeProvider>
   );
 }

@@ -1,26 +1,24 @@
 import Link from "next/link";
+import DarkModeToggle from "@/components/DarkModeToggle";
 import styles from "./NavBar.module.css";
 
 const NavBar = () => {
   return (
     <nav className={styles.nav}>
       <ul>
-        <li>
-          <Link href="/">Home</Link>
-        </li>
-        <li>
-          <Link href="/franchise">Franchises</Link>
-        </li>
-        <li>
-          <Link href="/league">Leagues</Link>
-        </li>
-        <li>
-          <Link href="/player">Players</Link>
-        </li>
-        <li>
-          <Link href="/about">About</Link>
-        </li>
+        {[
+          ["Home", "/"],
+          ["Franchise", "/franchise"],
+          ["Leagues", "/league"],
+          ["Players", "/player"],
+          ["About", "/about"],
+        ].map(([title, url]) => (
+          <li key={title.toLowerCase()}>
+            <Link href={url}>{title}</Link>
+          </li>
+        ))}
       </ul>
+      <DarkModeToggle />
     </nav>
   );
 };

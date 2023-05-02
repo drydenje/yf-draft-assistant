@@ -1,0 +1,11 @@
+.button {
+  border: none;
+  background: transparent;
+}
+
+.image {
+  border: none;
+  background: transparent;
+  /* border: 1px solid blue; */
+  width: 10px;
+}

@@ -36,14 +36,16 @@ const Franchise = ({results}) => {
   }
 
   const listLeagues = Object.keys(leagues).map((leagueName, i) => 
-    <ul className="league" key={i}>
+    <ul key={i}>
+        {/* Leagues */}
         <li key={i}>
           <h2>{leagueName}</h2>
-          <ul className="division">
+          {/* Divisions  */}
+          <ul>
             { Object.keys(leagues[leagueName]).map((divisionName, i) => 
             <li key={i}>
               <h2>{divisionName}</h2>
-              <ul className="team">
+              <ul>
                 { Object.values(leagues[leagueName][divisionName]).map((team: Team, i) => 
                   <li key={i}>
                     <Link href={`/franchise/${team.franchID}`}>{team.franchName}</Link>
@@ -57,7 +59,7 @@ const Franchise = ({results}) => {
   
   return (
     <>
-      <h1 className="mainHeading">Franchises</h1>
+      <h1>Franchises</h1>
       { listLeagues }
     </>
   )

@@ -7,8 +7,15 @@ const config = {
   ],
   addons: [
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
+    // "@storybook/addon-essentials",
+    {
+      name: "@storybook/addon-essentials",
+      options: {
+        backgrounds: false,
+      },
+    },
     "@storybook/addon-interactions",
+    "@storybook/addon-mdx-gfm",
   ],
   framework: {
     name: "@storybook/nextjs",
@@ -17,5 +24,6 @@ const config = {
   docs: {
     autodocs: "tag",
   },
+  staticDirs: ["../public"],
 };
 export default config;

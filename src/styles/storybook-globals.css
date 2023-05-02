@@ -1,0 +1,28 @@
+/* # > div { */
+div[id^="story--"] > div {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+ /* div[id^="story--"] > div > [data-theme="dark"] { */
+[data-theme="dark"] {
+  background-color: yellow;
+  /* background-color: var(--background); */
+  color: var(--foreground);
+}
+
+
+:root {
+  /* Default theme */
+  color-scheme: light;
+  --background: white;
+  --foreground: black;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --background: black;
+  --foreground: white;
+}
+
+/* data-theme="light" style="color-scheme: light;"*/

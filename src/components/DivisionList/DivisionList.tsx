@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import styles from './DivisionList.module.css';
 
 type Division = {
   name: string,
@@ -14,7 +15,7 @@ const DivisionList = ({ name, teams }: Division) => {
   if (teams.length === 0 || name === null) return null;
 
   return (
-    <>
+    <div className={styles.divisionContainer}>
       <h2>{name}</h2>
       <ul>
         { teams.map((team) => 
@@ -23,7 +24,7 @@ const DivisionList = ({ name, teams }: Division) => {
           </li> 
         )}
       </ul>
-    </>
+    </div>
   );
 };
 

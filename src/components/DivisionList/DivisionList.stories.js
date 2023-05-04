@@ -44,19 +44,10 @@ const teams = [
   },
 ];
 
-export const System = {
-  args: {
-    name: "American",
-    teams: teams,
-  },
-  parameters: {
-    theme: "system",
-  },
-};
-
 export const LightTheme = {
   args: {
-    ...System.args,
+    name: "West",
+    teams: teams,
   },
   parameters: {
     theme: "light",
@@ -65,7 +56,7 @@ export const LightTheme = {
 
 export const DarkTheme = {
   args: {
-    ...System.args,
+    ...LightTheme.args,
   },
   parameters: {
     theme: "dark",

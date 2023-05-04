@@ -8,18 +8,10 @@ import "../src/styles/storybook-globals.css";
 const withTheme = (Story, context) => {
   const { theme } = context.parameters;
   const className = `${montserrat.variable} + " " + ${oswald.variable}`;
-  // const className = `body-mock-${theme}`;
-  // const sty = `color-scheme: light;`;
-  // const storyTheme = theme === "dark" ?
+
   return (
     <ThemeProvider theme={theme}>
-      {/* <div className={className}> */}
-      {/* <div data-theme="light" style={sty}> */}
-      <div
-        data-theme={theme}
-        className={className}
-        // className={montserrat.variable + " " + oswald.variable}
-      >
+      <div data-theme={theme} className={className}>
         <Story />
       </div>
     </ThemeProvider>

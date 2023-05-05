@@ -1,8 +1,9 @@
-import DivisionList from '@/components/DivisionList/DivisionList';
+// import DivisionList from '@/components/DivisionList/DivisionList';
+import LeagueList from '@/components/LeagueList';
 import FetchGraphQL from '@/services/Data/FetchGraphQL'
 
 const Franchise = ({results}) => {
-  console.log(results);
+  // console.log(results);
 
   let leagues = {
       "American": {
@@ -32,22 +33,14 @@ const Franchise = ({results}) => {
       }
   }
 
-  const listLeagues = Object.keys(leagues).map((leagueName, i) => 
-    <ul key={i}>
-        {/* Leagues */}
-        <li key={i}>
-          <h2>{leagueName}</h2>
-          {/* Divisions  */}
-          <ul>
-            { Object.keys(leagues[leagueName]).map((divisionName, i) =>
-                <li key={i}>
-                  <DivisionList name={divisionName} teams={leagues[leagueName][divisionName]}/>
-                </li>
-              )
-            }
-          </ul>
-        </li>
-    </ul>)
+  const listLeagues = Object.keys(leagues).map((leagueName, i) => {
+    // console.log(leagues[leagueName]);
+    return(
+      <ul key={i}>
+        <LeagueList divisions={leagues[leagueName]} leagueName={leagueName}/>
+      </ul>
+    )
+    })
   
   return (
     <>

@@ -8,14 +8,14 @@ const Header = () => {
   return (
     <header>
       <h1 className={styles.title}>Header</h1>
-      <Image
+      {/* <Image
         className={styles.image}
         src={imagePath}
         alt={altText}
         width={100}
         height={100}
         priority
-      />
+      /> */}
     </header>
   );
 };

@@ -1,8 +1,10 @@
 html {
+  /* font-family: var(--paragraph-font); */
   font-size: 62.5%;
 }
 
 body {
+  /* font-family: var(--paragraph-font); */
   font-size: 1.8rem;
   background-color: var(--background);
   color: var(--foreground);
@@ -29,9 +31,9 @@ h2 {
   font-weight: 400;
 }
 
-p {
+/* p {
   font-family: var(--paragraph-font);
-}
+} */
 
 nav {
   background-color: var(--background);
@@ -48,6 +50,7 @@ img {
 }
 
 a {
+  font-family: var(--paragraph-font);
   color: var(--foreground);
   text-decoration: none;
 }

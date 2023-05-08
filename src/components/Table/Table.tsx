@@ -64,14 +64,12 @@ const Table = ({ headings, stats, onClickHandler=null }: TableData) => {
           return (
             <tr
               {...row.getRowProps()}
-              className="hover:bg-slate-300"
               onClick={() => (onClickHandler ? onClickHandler(row) : null)}
             >
               {row.cells.map((cell) => {
                 return (
                   <td
                     {...cell.getCellProps()}
-                    className="border border-slate-300"
                   >
                     {cell.render("Cell")}
                   </td>

@@ -3,6 +3,7 @@ import FetchGraphQL from "@/services/Data/FetchGraphQL";
 import Table from "@/components/Table";
 import { unionWith, isEqual } from 'lodash'
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const franchise = ({ franchise }) => {
   const router = useRouter();
@@ -13,25 +14,38 @@ const franchise = ({ franchise }) => {
   const logoPath = "/assets/logos/" + svgName;
   const altText = "Logo of the " + franchise.franchName;
   const { hitters, pitchers } = franchise.roster;
-  const roster = unionWith(hitters, pitchers, isEqual);
+  const roster = unionWith(hitters, pitchers, isEqual)  
+    .map(player => {
+      const bday = new Date(player.birthYear, player.birthMonth - 1, player.birthDay);
+      const playerLink = <Link href={`/player/${player.playerID}`}>{`${player.nameFirst} ${player.nameLast}`}</Link>
+      const newPlayer = {
+        name: playerLink,
+        playerID: player.playerID,
+        birthday: bday.toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'}),
+        birthCity: player.birthCity,
+        birthState: player.birthState,
+        birthCountry: player.birthCountry,
+        weight: player.weight,
+        height: player.height,
+        bats: player.bats,
+        throws: player.throws,
+        retroID: player.retroID,
+        bbrefID: player.bbrefID,
+      }
+      return newPlayer;
+    })
 
   const headings = [
-    { Header: "nameFirst", accessor: "nameFirst" },
-    { Header: "nameLast", accessor: "nameLast" },
-    { Header: "nameGiven", accessor: "nameGiven" },
+    { Header: "Name", accessor: "name" },
     { Header: "playerID", accessor: "playerID" },
-    { Header: "birthYear", accessor: "birthYear" },
-    { Header: "birthMonth", accessor: "birthMonth" },
-    { Header: "birthDay", accessor: "birthDay" },
-    { Header: "birthCountry", accessor: "birthCountry" },
-    { Header: "birthState", accessor: "birthState" },
-    { Header: "birthCity", accessor: "birthCity" },
-    { Header: "weight", accessor: "weight" },
-    { Header: "height", accessor: "height" },
-    { Header: "bats", accessor: "bats" },
-    { Header: "throws", accessor: "throws" },
-    { Header: "debut", accessor: "debut" },
-    { Header: "finalGame", accessor: "finalGame" },
+    { Header: "DoB", accessor: "birthday" },
+    { Header: "City", accessor: "birthCity" },
+    { Header: "State", accessor: "birthState" },
+    { Header: "Country", accessor: "birthCountry" },
+    { Header: "Weight", accessor: "weight" },
+    { Header: "Height", accessor: "height" },
+    { Header: "Bats", accessor: "bats" },
+    { Header: "Throws", accessor: "throws" },
     { Header: "retroID", accessor: "retroID" },
     { Header: "bbrefID", accessor: "bbrefID" },
   ];
@@ -50,8 +64,8 @@ const franchise = ({ franchise }) => {
       <Image 
         src={logoPath}
         alt={altText}
-        width={0}
-        height={0}
+        width={100}
+        height={100}
         priority
         // className="w-1/5 h-auto"
       />
@@ -59,7 +73,8 @@ const franchise = ({ franchise }) => {
       {roster.length > 0 ? (
         <div>
           <h2>Roster</h2>
-          <Table headings={headings} stats={roster} onClickHandler={handleRowClick}/>
+          <Table headings={headings} stats={roster}/>
+          {/* <Table headings={headings} stats={roster} onClickHandler={handleRowClick}/> */}
         </div>
       ) : null}      
     </div>
@@ -85,13 +100,13 @@ export const getServerSideProps = async (context) => {
               birthCity
               nameFirst
               nameLast
-              nameGiven
+              #nameGiven
               weight
               height
               bats
               throws
-              debut
-              finalGame
+              #debut
+              #finalGame
               retroID
               bbrefID
             }
@@ -105,13 +120,13 @@ export const getServerSideProps = async (context) => {
               birthCity
               nameFirst
               nameLast
-              nameGiven
+              #nameGiven
               weight
               height
               bats
               throws
-              debut
-              finalGame
+              #debut
+              #finalGame
               retroID
               bbrefID
             }

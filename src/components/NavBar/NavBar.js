@@ -9,8 +9,8 @@ const NavBar = () => {
         {[
           ["Home", "/"],
           ["Franchise", "/franchise"],
-          ["Leagues", "/league"],
-          ["Players", "/player"],
+          // ["Leagues", "/league"],
+          // ["Players", "/player"],
           ["About", "/about"],
         ].map(([title, url]) => (
           <li key={title.toLowerCase()}>

@@ -1,32 +1,17 @@
 import { ThemeProvider } from "next-themes";
-import { useInsertionEffect } from "react";
+import { oswald, montserrat } from "@/styles/fonts";
 import "../src/styles/normalize.css";
 import "../src/styles/globals.css";
 import "../src/styles/colours.css";
 import "../src/styles/storybook-globals.css";
 
-// let isInserted = new Set();
-// function useCSS(rule) {
-//   useInsertionEffect(() => {
-//     if (!isInserted.has(rule)) {
-//       isInserted.add(rule);
-//       document.head.appendChild(getStyleForRule(rule));
-//     }
-//   });
-//   return rule;
-// }
-
 const withTheme = (Story, context) => {
   const { theme } = context.parameters;
-  const className = `body-mock-${theme}`;
-  const sty = `color-scheme: light;`;
-  // console.log("THEME:", theme);
-  // const storyTheme = theme === "dark" ?
+  const className = `${montserrat.variable} + " " + ${oswald.variable}`;
+
   return (
     <ThemeProvider theme={theme}>
-      {/* <div className={className}> */}
-      {/* <div data-theme="light" style={sty}> */}
-      <div data-theme={theme}>
+      <div data-theme={theme} className={className}>
         <Story />
       </div>
     </ThemeProvider>

@@ -1,8 +1,39 @@
+html {
+  /* font-family: var(--paragraph-font); */
+  font-size: 62.5%;
+}
+
 body {
+  /* font-family: var(--paragraph-font); */
+  font-size: 1.8rem;
   background-color: var(--background);
   color: var(--foreground);
-  max-width: 100vw;
+  /* max-width: 100vw; */
 }
+
+main {
+  width: 100%;
+}
+
+h1, h2 {
+  font-family: var(--heading-font);
+  text-transform: uppercase;
+  margin: 0.5rem auto;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 3.5rem;
+  font-weight: 400;
+}
+
+/* p {
+  font-family: var(--paragraph-font);
+} */
 
 nav {
   background-color: var(--background);
@@ -16,4 +47,25 @@ nav a {
 img {
   margin: 0;
   padding: 0;
+}
+
+a {
+  font-family: var(--paragraph-font);
+  color: var(--foreground);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 0;
+  margin: 0;
 }

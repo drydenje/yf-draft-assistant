@@ -1,11 +1,9 @@
-import Link from 'next/link'
+// import DivisionList from '@/components/DivisionList/DivisionList';
+import LeagueList from '@/components/LeagueList';
 import FetchGraphQL from '@/services/Data/FetchGraphQL'
 
 const Franchise = ({results}) => {
-  interface Team {
-    franchID: String,
-    franchName: String,
-  }
+  // console.log(results);
 
   let leagues = {
       "American": {
@@ -35,27 +33,14 @@ const Franchise = ({results}) => {
       }
   }
 
-  const listLeagues = Object.keys(leagues).map((leagueName, i) => 
-    <ul key={i}>
-        {/* Leagues */}
-        <li key={i}>
-          <h2>{leagueName}</h2>
-          {/* Divisions  */}
-          <ul>
-            { Object.keys(leagues[leagueName]).map((divisionName, i) => 
-            <li key={i}>
-              <h2>{divisionName}</h2>
-              <ul>
-                { Object.values(leagues[leagueName][divisionName]).map((team: Team, i) => 
-                  <li key={i}>
-                    <Link href={`/franchise/${team.franchID}`}>{team.franchName}</Link>
-                  </li> 
-                )}
-              </ul>
-            </li>)}
-          </ul>
-        </li>
-    </ul>)
+  const listLeagues = Object.keys(leagues).map((leagueName, i) => {
+    // console.log(leagues[leagueName]);
+    return(
+      <ul key={i}>
+        <LeagueList divisions={leagues[leagueName]} leagueName={leagueName}/>
+      </ul>
+    )
+    })
   
   return (
     <>

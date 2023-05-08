@@ -1,15 +1,15 @@
-import PlayerList from "@/components/PlayerList";
+// import PlayerList from "@/components/PlayerList";
 
 function Team({ team }) {
   return (
     <div>
-      {team && (
+      {/* {team && (
         <div>
           <h3>Team: {team.teamname}</h3>
           <span>Manager:{team.managers[0].nickname}</span>
           {team.picks.length > 0 && <PlayerList players={team.picks} />}
         </div>
-      )}
+      )} */}
     </div>
   );
 }

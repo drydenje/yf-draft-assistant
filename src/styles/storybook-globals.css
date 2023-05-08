@@ -6,8 +6,7 @@ div[id^="story--"] > div {
 
  /* div[id^="story--"] > div > [data-theme="dark"] { */
 [data-theme="dark"] {
-  background-color: yellow;
-  /* background-color: var(--background); */
+  background-color: var(--background);
   color: var(--foreground);
 }
 

@@ -1,3 +1,16 @@
-.title {
-  background-color:grey;
+.table {
+  margin: 0 auto;
+}
+
+.table th, .table td {
+  padding: 0.5rem;
+}
+
+.table th {
+  background: hsl(0 0% 0% / 0.5);
+  text-align: left;
+}
+
+.table tr:nth-of-type(2n) {
+  background: hsl(0 0% 0% / 0.05);
 }

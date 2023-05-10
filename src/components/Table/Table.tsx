@@ -1,6 +1,7 @@
 // import styles from "./Table.module.css";
 import React from "react";
 import { useTable, useSortBy } from "react-table";
+import styles from './Table.module.css'
 
 type TableData = {
   headings: {
@@ -39,7 +40,7 @@ const Table = ({ headings, stats, onClickHandler=null }: TableData) => {
   return (
     <table
       {...getTableProps()}
-      className="border-collapse w-full border border-slate-400 dark:border-slate-500 bg-white dark:bg-slate-800 text-sm shadow-sm"
+      className={styles.table}
     >
       <thead>
         {headerGroups.map((headerGroup) => (
@@ -47,7 +48,6 @@ const Table = ({ headings, stats, onClickHandler=null }: TableData) => {
             {headerGroup.headers.map((column) => (
               <th
                 {...column.getHeaderProps(column.getSortByToggleProps())}
-                className="border border-slate-300 underline"
               >
                 {column.render("Header")}
                 <span>

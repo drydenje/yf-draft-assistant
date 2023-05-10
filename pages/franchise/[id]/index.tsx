@@ -2,11 +2,9 @@ import Image from 'next/image';
 import FetchGraphQL from "@/services/Data/FetchGraphQL";
 import Table from "@/components/Table";
 import { unionWith, isEqual } from 'lodash'
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 const franchise = ({ franchise }) => {
-  const router = useRouter();
   const svgName = franchise.franchName
     .toLowerCase()
     .replace(/ /g, '-')
@@ -17,10 +15,11 @@ const franchise = ({ franchise }) => {
   const roster = unionWith(hitters, pitchers, isEqual)  
     .map(player => {
       const bday = new Date(player.birthYear, player.birthMonth - 1, player.birthDay);
-      const playerLink = <Link href={`/player/${player.playerID}`}>{`${player.nameFirst} ${player.nameLast}`}</Link>
+      const playerLink = <Link href={`/player/${player.playerID}`}>{`${player.nameFirst} ${player.nameLast}`}</Link>;
+      // const firstLetter = 
+      const bbrLink = <Link href={`https://www.baseball-reference.com/players/j/${player.bbrefID}.shtml`}>BBRef</Link>
       const newPlayer = {
         name: playerLink,
-        playerID: player.playerID,
         birthday: bday.toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'}),
         birthCity: player.birthCity,
         birthState: player.birthState,
@@ -37,7 +36,6 @@ const franchise = ({ franchise }) => {
 
   const headings = [
     { Header: "Name", accessor: "name" },
-    { Header: "playerID", accessor: "playerID" },
     { Header: "DoB", accessor: "birthday" },
     { Header: "City", accessor: "birthCity" },
     { Header: "State", accessor: "birthState" },
@@ -50,12 +48,6 @@ const franchise = ({ franchise }) => {
     { Header: "bbrefID", accessor: "bbrefID" },
   ];
 
-  const handleRowClick = (row) => {
-    // navigate to playerID
-    const { playerID } = row.original;
-    router.push(`/player/${playerID}`)
-  }
-  
   return (
     <div>
       <p>
@@ -67,14 +59,12 @@ const franchise = ({ franchise }) => {
         width={100}
         height={100}
         priority
-        // className="w-1/5 h-auto"
       />
 
       {roster.length > 0 ? (
         <div>
           <h2>Roster</h2>
           <Table headings={headings} stats={roster}/>
-          {/* <Table headings={headings} stats={roster} onClickHandler={handleRowClick}/> */}
         </div>
       ) : null}      
     </div>
@@ -105,8 +95,6 @@ export const getServerSideProps = async (context) => {
               height
               bats
               throws
-              #debut
-              #finalGame
               retroID
               bbrefID
             }
@@ -125,8 +113,6 @@ export const getServerSideProps = async (context) => {
               height
               bats
               throws
-              #debut
-              #finalGame
               retroID
               bbrefID
             }

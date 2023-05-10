@@ -16,8 +16,8 @@ const franchise = ({ franchise }) => {
     .map(player => {
       const bday = new Date(player.birthYear, player.birthMonth - 1, player.birthDay);
       const playerLink = <Link href={`/player/${player.playerID}`}>{`${player.nameFirst} ${player.nameLast}`}</Link>;
-      // const firstLetter = 
-      const bbrLink = <Link href={`https://www.baseball-reference.com/players/j/${player.bbrefID}.shtml`}>BBRef</Link>
+      const firstLetter = player.bbrefID.charAt(0);
+      const bbrLink = <Link href={`https://www.baseball-reference.com/players/${firstLetter}/${player.bbrefID}.shtml`}>BBRef</Link>;
       const newPlayer = {
         name: playerLink,
         birthday: bday.toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'}),
@@ -29,7 +29,7 @@ const franchise = ({ franchise }) => {
         bats: player.bats,
         throws: player.throws,
         retroID: player.retroID,
-        bbrefID: player.bbrefID,
+        bbrefID: bbrLink,
       }
       return newPlayer;
     })

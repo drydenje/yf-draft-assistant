@@ -7,10 +7,12 @@
 }
 
 .table th {
-  background: hsl(0 0% 0% / 0.5);
+  /* background: hsl(0 0% 0% / 0.5); */
+  background: var(--background);
   text-align: left;
 }
 
 .table tr:nth-of-type(2n) {
-  background: hsl(0 0% 0% / 0.05);
+  /* background: hsl(0 0% 0% / 0.05); */
+  background: var(--foreground);
 }

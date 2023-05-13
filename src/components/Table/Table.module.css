@@ -13,6 +13,6 @@
 }
 
 .table tr:nth-of-type(2n) {
-  /* background: hsl(0 0% 0% / 0.05); */
-  background: var(--foreground);
+  background: var(--background-off);
+  /* background: var(--foreground); */
 }

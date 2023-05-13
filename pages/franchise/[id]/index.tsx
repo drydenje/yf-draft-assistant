@@ -49,25 +49,27 @@ const franchise = ({ franchise }) => {
   ];
 
   return (
-    <div>
-      <p>
-        <span>{franchise.franchName}</span>
-      </p>
-      <Image 
-        src={logoPath}
-        alt={altText}
-        width={100}
-        height={100}
-        priority
-      />
+    <>
+      {/* <div className="myWrapper"> */}
+        <p>
+          <span>{franchise.franchName}</span>
+        </p>
+        <Image 
+          src={logoPath}
+          alt={altText}
+          width={100}
+          height={100}
+          priority
+        />
 
-      {roster.length > 0 ? (
-        <div>
-          <h2>Roster</h2>
-          <Table headings={headings} stats={roster}/>
-        </div>
-      ) : null}      
-    </div>
+        {roster.length > 0 ? (
+          <div>
+            <h2>Roster</h2>
+            <Table headings={headings} stats={roster}/>
+          </div>
+        ) : null}      
+      {/* </div> */}
+    </>
   );
 };
 

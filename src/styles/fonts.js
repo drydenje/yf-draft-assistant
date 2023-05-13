@@ -1,3 +1,7 @@
+// These are all variable weight fonts, and use the next.js image
+// component to preload, etc
+// (that's why this is in a .js file instead of .css)
+
 import { Montserrat, Oswald } from "next/font/google";
 
 const oswald = Oswald({

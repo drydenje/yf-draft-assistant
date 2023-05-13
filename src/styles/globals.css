@@ -69,3 +69,8 @@ li {
   padding: 0;
   margin: 0;
 }
+
+.myWrapper {
+  width: min(900px, 100% - 3rem);
+  margin-inline: auto;
+}

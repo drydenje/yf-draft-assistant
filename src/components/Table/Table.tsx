@@ -39,49 +39,51 @@ const Table = ({ headings, stats, onClickHandler=null }: TableData) => {
     useTable({ columns, data }, useSortBy);
 
   return (
-    <table
-      {...getTableProps()}
-      className={styles.table}
-    >
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th
-                {...column.getHeaderProps(column.getSortByToggleProps())}
-              >
-                {column.render("Header")}
-                <span>
-                  {column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}
-                </span>
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-          return (
-            <tr
-              {...row.getRowProps()}
-              onClick={() => (onClickHandler ? onClickHandler(row) : null)}
-            >
-              {row.cells.map((cell) => {
-                return (
-                  <td
-                    data-cell={cell.column.Header}
-                    {...cell.getCellProps()}
-                  >
-                    {cell.render("Cell")}
-                  </td>
-                );
-              })}
+    <div className={styles.tableContainer}>
+      <table
+        {...getTableProps()}
+        className={styles.table}
+      >
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <th
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                >
+                  {column.render("Header")}
+                  <span>
+                    {column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}
+                  </span>
+                </th>
+              ))}
             </tr>
-          );
-        })}
-      </tbody>
-    </table>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map((row) => {
+            prepareRow(row);
+            return (
+              <tr
+                {...row.getRowProps()}
+                onClick={() => (onClickHandler ? onClickHandler(row) : null)}
+              >
+                {row.cells.map((cell) => {
+                  return (
+                    <td
+                      data-cell={cell.column.Header}
+                      {...cell.getCellProps()}
+                    >
+                      {cell.render("Cell")}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

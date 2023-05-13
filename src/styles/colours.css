@@ -2,8 +2,8 @@
   /* Default theme */
   color-scheme: light;
   --background: hsla(360, 100%, 100%, 1);
-  --background-50: hsl(360 100% 100% / 0.5);
-  --background-10: hsl(0 0%, 80% / 0.1);
+  --background-50: hsl(360 100% 100% / 0.9);
+  --background-10: hsl(360 100% 100% / 0.8);
   --foreground: hsla(0, 0%, 0%, 1);
 }
 

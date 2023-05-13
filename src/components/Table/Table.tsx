@@ -70,6 +70,7 @@ const Table = ({ headings, stats, onClickHandler=null }: TableData) => {
               {row.cells.map((cell) => {
                 return (
                   <td
+                    data-cell={cell.column.Header}
                     {...cell.getCellProps()}
                   >
                     {cell.render("Cell")}

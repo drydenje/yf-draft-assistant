@@ -55,9 +55,9 @@ const player = ({ player }) => {
 
   return (
     <div>
-      <p>
+      <h2>
         <span>{player.nameFirst}</span> <span>{player.nameLast}</span>
-      </p>
+      </h2>
       {/* <p>
         <span>
           Birthday: {player.birthYear}-{player.birthMonth}-{player.birthDay}
@@ -120,19 +120,24 @@ const player = ({ player }) => {
       <p>
         <span>bbrefID {player.bbrefID}</span>
       </p> */}
-
       {player.basicBattingStats.length > 0 ? (
-        <Table 
-          headings={batterHeadings} 
-          stats={player.basicBattingStats} 
-        />
+        <>
+          <h3>Hitting Statistics</h3>
+          <Table 
+            headings={batterHeadings} 
+            stats={player.basicBattingStats} 
+          />
+        </>
       ) : null}
 
       {player.basicPitchingStats.length > 0 ? (
-        <Table 
-          headings={pitcherHeadings} 
-          stats={player.basicPitchingStats} 
-        />
+        <>
+          <h3>Pitching Statistics</h3>
+          <Table 
+            headings={pitcherHeadings} 
+            stats={player.basicPitchingStats} 
+          />
+        </>
       ) : null}
     </div>
   );

@@ -19,6 +19,9 @@
   background: var(--background-10)
 } */
 
+.table tbody tr td {
+  white-space: nowrap;
+}
 
 .table tr:nth-of-type(2n) {
   background: var(--background-10);

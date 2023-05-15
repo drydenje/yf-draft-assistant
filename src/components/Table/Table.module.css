@@ -22,6 +22,9 @@
 .table tbody tr td {
   white-space: nowrap;
 }
+.table tbody tr td:first-child {
+  margin-right: auto;
+}
 
 .table tr:nth-of-type(2n) {
   background: var(--background-10);

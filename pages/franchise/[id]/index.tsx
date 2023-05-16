@@ -55,10 +55,11 @@ const franchise = ({ franchise }) => {
           <span>{franchise.franchName}</span>
         </p>
         <Image 
+          className="background-team-logo"
           src={logoPath}
           alt={altText}
-          width={100}
-          height={100}
+          width={500}
+          height={500}
           priority
         />
 

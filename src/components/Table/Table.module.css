@@ -1,6 +1,7 @@
 .table {
   width: 100%;
-  background: #323232;
+  /* background: #323232; */
+  background: rgba(50,50,50,0.9);
   border-collapse: collapse;
 }
 

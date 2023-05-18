@@ -22,3 +22,7 @@
 .divisionContainer ul li {
   margin: 0.2rem;
 }
+
+.teamLink {
+  text-decoration: none;
+}

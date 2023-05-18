@@ -20,7 +20,7 @@ const DivisionList = ({ name, teams }: Division) => {
       <ul>
         { teams.map((team) => 
           <li key={team.franchID}>
-            <Link href={`/franchise/${team.franchID}`}>{team.franchName}</Link>
+            <Link className={styles.teamLink} href={`/franchise/${team.franchID}`}>{team.franchName}</Link>
           </li> 
         )}
       </ul>

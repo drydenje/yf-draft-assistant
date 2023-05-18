@@ -43,6 +43,7 @@ nav {
 
 nav a {
   color: var(--foreground);
+  text-decoration: none;
 }
 
 img {
@@ -53,7 +54,6 @@ img {
 a {
   font-family: var(--paragraph-font);
   color: var(--foreground);
-  text-decoration: none;
 }
 
 a:hover {

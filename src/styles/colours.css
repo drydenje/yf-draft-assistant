@@ -1,14 +1,18 @@
 :root {
   /* Default theme */
   color-scheme: light;
-  --background: white;
-  --foreground: black;
+  --background: hsla(360, 100%, 100%, 1);
+  --background-50: hsl(360 100% 100% / 0.9);
+  --background-10: hsl(360 100% 100% / 0.8);
+  --foreground: hsla(0, 0%, 0%, 1);
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --background: black;
-  --foreground: white;
+  --background: hsl(0 0% 0%);
+  --background-50: hsl(0 0% 0% / 0.5);
+  --background-10: hsl(0 0% 0% / 0.1);
+  --foreground: hsl(360, 100%, 100%, 1);
 }
 
 /* data-theme="light" style="color-scheme: light;"*/

@@ -19,21 +19,46 @@
     "jsx": "preserve",
     "baseUrl": "./src",
     "paths": {
-      "@/assets/*": ["assets/*"],
-      "@/components/*": ["components/*"],
-      "@/context/*": ["context/*"],
-      "@/domain/*": ["domain/*"],
-      "@/hooks/*": ["hooks/*"],
-      "@/services/*": ["services/*"],
-      "@/Format/*": ["services/Format/*"],
-      "@/styles/*": ["styles/*"],
-    }
+      "@/assets/*": [
+        "assets/*"
+      ],
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/context/*": [
+        "context/*"
+      ],
+      "@/domain/*": [
+        "domain/*"
+      ],
+      "@/hooks/*": [
+        "hooks/*"
+      ],
+      "@/services/*": [
+        "services/*"
+      ],
+      "@/Format/*": [
+        "services/Format/*"
+      ],
+      "@/styles/*": [
+        "styles/*"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "pages/player.js", "pages/player/[id]/index.js"  ],
+    "**/*.tsx",
+    "pages/player.js",
+    "pages/player/[id]/index.js",
+    ".next/types/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]

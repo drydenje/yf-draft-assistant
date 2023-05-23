@@ -2,7 +2,8 @@ import Image from 'next/image';
 import FetchGraphQL from "@/services/Data/FetchGraphQL";
 import Table from "@/components/Table";
 import { unionWith, isEqual } from 'lodash'
-import Link from 'next/link';
+import Link, { LinkProps } from 'next/link';
+import { createColumnHelper } from '@tanstack/react-table';
 
 const franchise = ({ franchise }) => {
   const svgName = franchise.franchName
@@ -12,7 +13,18 @@ const franchise = ({ franchise }) => {
   const logoPath = "/assets/logos/" + svgName;
   const altText = "Logo of the " + franchise.franchName;
   const { hitters, pitchers } = franchise.roster;
-  const roster = unionWith(hitters, pitchers, isEqual)  
+
+  type Player = {
+    name: LinkProps
+    // birthday: string
+    // weight: number
+    // height: number
+    // bats: string
+    // throws: string
+    // bbrefID: LinkProps
+  };
+    
+  const roster: Player[] = unionWith(hitters, pitchers, isEqual)  
     .map(player => {
       const bday = new Date(player.birthYear, player.birthMonth - 1, player.birthDay);
       const playerLink = <Link href={`/player/${player.playerID}`}>{`${player.nameFirst} ${player.nameLast}`}</Link>;
@@ -20,15 +32,17 @@ const franchise = ({ franchise }) => {
       const bbrLink = <Link href={`https://www.baseball-reference.com/players/${firstLetter}/${player.bbrefID}.shtml`}>BBRef</Link>;
       const newPlayer = {
         name: playerLink,
-        birthday: bday.toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'}),
-        weight: player.weight,
-        height: player.height,
-        bats: player.bats,
-        throws: player.throws,
-        bbrefID: bbrLink,
+        // birthday: bday.toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'}),
+        // weight: player.weight,
+        // height: player.height,
+        // bats: player.bats,
+        // throws: player.throws,
+        // bbrefID: bbrLink,
       }
       return newPlayer;
     })
+
+    
 
   const headings = [
     { Header: "Name", accessor: "name" },

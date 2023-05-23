@@ -39,7 +39,7 @@ type TableData = {
   onClickHandler?: Function,
 };
 
-const Table = ({ headings, stats, onClickHandler=()=>{} }: TableData) => {
+const Table = ({ headings, stats }: TableData) => {
   const columns = React.useMemo(() => headings, []);
   const data = React.useMemo(() => stats, []);
   // const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
@@ -65,29 +65,21 @@ const Table = ({ headings, stats, onClickHandler=()=>{} }: TableData) => {
             </tr>
           ))}
         </thead>
-{/*         
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
-            return (
-              <tr
-                {...row.getRowProps()}
-                onClick={() => (onClickHandler ? onClickHandler(row) : null)}
-              >
-                {row.cells.map((cell) => {
-                  return (
-                    <td
-                      data-cell={cell.column.Header}
-                      {...cell.getCellProps()}
-                    >
-                      {cell.render("Cell")}
-                    </td>
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody> */}
+        
+        <tbody>
+          {table.getRowModel().rows.map((row) => (
+            <tr key={row.id}>
+              {row.getVisibleCells().map((cell) => (
+                <td
+                  key={cell.id}
+                  data-cell={cell.getContext().column.id}
+                >
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );

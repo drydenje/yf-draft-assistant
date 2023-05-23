@@ -15,44 +15,74 @@ const franchise = ({ franchise }) => {
   const { hitters, pitchers } = franchise.roster;
 
   type Player = {
-    name: LinkProps
-    // birthday: string
-    // weight: number
-    // height: number
-    // bats: string
-    // throws: string
+    // name: LinkProps
+    name: string
+    birthday: string
+    weight: number
+    height: number
+    bats: string
+    throws: string
     // bbrefID: LinkProps
   };
     
   const roster: Player[] = unionWith(hitters, pitchers, isEqual)  
     .map(player => {
+      const playerLink = `${player.nameFirst} ${player.nameLast}`;
+      // const playerLink = <Link href={`/player/${player.playerID}`}>{`${player.nameFirst} ${player.nameLast}`}</Link>;
       const bday = new Date(player.birthYear, player.birthMonth - 1, player.birthDay);
-      const playerLink = <Link href={`/player/${player.playerID}`}>{`${player.nameFirst} ${player.nameLast}`}</Link>;
       const firstLetter = player.bbrefID.charAt(0);
-      const bbrLink = <Link href={`https://www.baseball-reference.com/players/${firstLetter}/${player.bbrefID}.shtml`}>BBRef</Link>;
+      // const bbrLink = <Link href={`https://www.baseball-reference.com/players/${firstLetter}/${player.bbrefID}.shtml`}>BBRef</Link>;
       const newPlayer = {
         name: playerLink,
-        // birthday: bday.toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'}),
-        // weight: player.weight,
-        // height: player.height,
-        // bats: player.bats,
-        // throws: player.throws,
+        birthday: bday.toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'}),
+        weight: player.weight,
+        height: player.height,
+        bats: player.bats,
+        throws: player.throws,
         // bbrefID: bbrLink,
       }
       return newPlayer;
     })
 
-    
+    const columnHelper = createColumnHelper<Player>();
 
-  const headings = [
-    { Header: "Name", accessor: "name" },
-    { Header: "DoB", accessor: "birthday" },
-    { Header: "Weight", accessor: "weight" },
-    { Header: "Height", accessor: "height" },
-    { Header: "Bats", accessor: "bats" },
-    { Header: "Throws", accessor: "throws" },
-    { Header: "bbrefID", accessor: "bbrefID" },
-  ];
+    const columns = [
+      columnHelper.accessor('name', {
+        cell: info => info.getValue(),
+        header: () => <span>Name</span>,
+      }),
+      columnHelper.accessor('birthday', {
+        cell: info => info.getValue(),
+        header: () => <span>DoB</span>,
+      }),
+      columnHelper.accessor('weight', {
+        cell: info => info.getValue(),
+        header: () => <span>Weight</span>,
+      }),
+      columnHelper.accessor('height', {
+        cell: info => info.getValue(),
+        header: () => <span>Height</span>,
+      }),
+      columnHelper.accessor('bats', {
+        cell: info => info.getValue(),
+        header: () => <span>Bats</span>,
+      }),
+      columnHelper.accessor('throws', {
+        cell: info => info.getValue(),
+        header: () => <span>Throws</span>,
+      }),
+      
+    ]
+
+  // const headings = [
+  //   { Header: "Name", accessor: "name" },
+  //   { Header: "DoB", accessor: "birthday" },
+  //   { Header: "Weight", accessor: "weight" },
+  //   { Header: "Height", accessor: "height" },
+  //   { Header: "Bats", accessor: "bats" },
+  //   { Header: "Throws", accessor: "throws" },
+  //   { Header: "bbrefID", accessor: "bbrefID" },
+  // ];
 
   return (
     <>
@@ -72,7 +102,7 @@ const franchise = ({ franchise }) => {
         {roster.length > 0 ? (
           <div>
             <h2>Roster</h2>
-            <Table headings={headings} stats={roster}/>
+            <Table headings={columns} stats={roster}/>
           </div>
         ) : null}      
       {/* </div> */}

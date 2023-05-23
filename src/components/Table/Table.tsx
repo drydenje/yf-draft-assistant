@@ -1,6 +1,13 @@
 // import styles from "./Table.module.css";
 import React from "react";
-import { useTable, useSortBy } from "react-table";
+import { 
+  createColumnHelper, 
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+  getSortedRowModel,
+} from "@tanstack/react-table";
+// useSortBy
 import styles from './Table.module.css'
 
 type TableData = {
@@ -32,34 +39,33 @@ type TableData = {
   onClickHandler?: Function,
 };
 
-const Table = ({ headings, stats, onClickHandler=null }: TableData) => {
+const Table = ({ headings, stats, onClickHandler=()=>{} }: TableData) => {
   const columns = React.useMemo(() => headings, []);
   const data = React.useMemo(() => stats, []);
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data }, useSortBy);
+  // const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+  const table =
+    useReactTable({ columns, data, getCoreRowModel: getCoreRowModel()});
 
   return (
     <div className={styles.tableContainer}>
-      <table
-        {...getTableProps()}
-        className={styles.table}
-      >
+      <table className={styles.table}>
         <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th
-                  {...column.getHeaderProps(column.getSortByToggleProps())}
-                >
-                  {column.render("Header")}
-                  <span>
-                    {column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}
-                  </span>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <tr key={headerGroup.id}>
+              {headerGroup.headers.map((header) => (
+                <th key={header.id}>
+                  {header.isPlaceholder
+                    ? null
+                  : flexRender(
+                      header.column.columnDef.header,
+                      header.getContext()
+                  )}
                 </th>
               ))}
             </tr>
           ))}
         </thead>
+{/*         
         <tbody {...getTableBodyProps()}>
           {rows.map((row) => {
             prepareRow(row);
@@ -81,7 +87,7 @@ const Table = ({ headings, stats, onClickHandler=null }: TableData) => {
               </tr>
             );
           })}
-        </tbody>
+        </tbody> */}
       </table>
     </div>
   );

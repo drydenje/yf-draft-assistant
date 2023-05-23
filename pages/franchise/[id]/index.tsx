@@ -21,14 +21,10 @@ const franchise = ({ franchise }) => {
       const newPlayer = {
         name: playerLink,
         birthday: bday.toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'}),
-        // birthCity: player.birthCity,
-        // birthState: player.birthState,
-        // birthCountry: player.birthCountry,
         weight: player.weight,
         height: player.height,
         bats: player.bats,
         throws: player.throws,
-        // retroID: player.retroID,
         bbrefID: bbrLink,
       }
       return newPlayer;
@@ -37,14 +33,10 @@ const franchise = ({ franchise }) => {
   const headings = [
     { Header: "Name", accessor: "name" },
     { Header: "DoB", accessor: "birthday" },
-    // { Header: "City", accessor: "birthCity" },
-    // { Header: "State", accessor: "birthState" },
-    // { Header: "Country", accessor: "birthCountry" },
     { Header: "Weight", accessor: "weight" },
     { Header: "Height", accessor: "height" },
     { Header: "Bats", accessor: "bats" },
     { Header: "Throws", accessor: "throws" },
-    // { Header: "retroID", accessor: "retroID" },
     { Header: "bbrefID", accessor: "bbrefID" },
   ];
 

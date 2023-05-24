@@ -7,15 +7,22 @@ import {
   useReactTable,
   getSortedRowModel,
 } from "@tanstack/react-table";
+import type { ColumnDef } from '@tanstack/react-table';
 // useSortBy
 import styles from './Table.module.css'
 
-type TableData = {
-  headings: {
-    Header: string;
-    accessor: string;
-  }[],
-  stats?: any;
+interface ReactTableProps<T extends object> {
+  data: T[];
+  columns: ColumnDef<T>[];
+}
+
+// type TableData = {
+  // headings: {
+  //   cell: Function,
+  //   header: Function,
+  //   accessorKey: String,
+  // }[],
+  // stats?: any;
   // {
   //   yearID: number,
   //   iG: number,
@@ -36,12 +43,11 @@ type TableData = {
   //   iSF: number,
   //   iGIDP: number,
   // }[],
-  onClickHandler?: Function,
-};
+// };
 
-const Table = ({ headings, stats }: TableData) => {
-  const columns = React.useMemo(() => headings, []);
-  const data = React.useMemo(() => stats, []);
+const Table = <T extends object>({ data, columns }: ReactTableProps<T>) => {
+  // const columns = React.useMemo(() => columns, []);
+  // const data = React.useMemo(() => data, []);
   // const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
   const table =
     useReactTable({ columns, data, getCoreRowModel: getCoreRowModel()});

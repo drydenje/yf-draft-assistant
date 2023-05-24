@@ -131,7 +131,7 @@ const PlayerDetails = ({ player }) => {
       {player.basicPitchingStats.length > 0 ? (
         <>
           <h3>Pitching Statistics</h3>
-          <Table headings={pitcherHeadings} stats={player.basicPitchingStats} />
+          <Table columns={pitcherHeadings} data={player.basicPitchingStats} />
         </>
       ) : null}
     </div>

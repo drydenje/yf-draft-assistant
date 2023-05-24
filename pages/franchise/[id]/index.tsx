@@ -71,18 +71,9 @@ const franchise = ({ franchise }) => {
         cell: info => info.getValue(),
         header: () => <span>Throws</span>,
       }),
-      
     ]
 
-  // const headings = [
-  //   { Header: "Name", accessor: "name" },
-  //   { Header: "DoB", accessor: "birthday" },
-  //   { Header: "Weight", accessor: "weight" },
-  //   { Header: "Height", accessor: "height" },
-  //   { Header: "Bats", accessor: "bats" },
-  //   { Header: "Throws", accessor: "throws" },
-  //   { Header: "bbrefID", accessor: "bbrefID" },
-  // ];
+    // console.log(columns[0]);
 
   return (
     <>
@@ -102,7 +93,8 @@ const franchise = ({ franchise }) => {
         {roster.length > 0 ? (
           <div>
             <h2>Roster</h2>
-            <Table headings={columns} stats={roster}/>
+            {/* <Table  */}
+            <Table columns={columns} data={roster}/>
           </div>
         ) : null}      
       {/* </div> */}

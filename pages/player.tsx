@@ -158,7 +158,7 @@ const Player = ({ player }) => {
       </Head>
       <h1>Players</h1>
       <h2>{name}</h2>
-      <Table headings={headings} stats={stats} />
+      {/* <Table headings={headings} stats={stats} /> */}
     </>
   );
 };

@@ -13,8 +13,7 @@ query {
   playerByID(id: "${context.params.id}") {
     playerID
     nameFirst
-    nameLast
-    
+    nameLast    
   
     basicBattingStats {
       yearID

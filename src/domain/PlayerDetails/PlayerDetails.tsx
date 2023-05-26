@@ -249,7 +249,7 @@ const PlayerDetails = ({ player }) => {
         <span>{player.nameFirst}</span> <span>{player.nameLast}</span>
       </h2>
 
-      {/* <p>
+      <p>
         <span>
           Birthday: {player.birthYear}-{player.birthMonth}-{player.birthDay}
         </span>
@@ -260,6 +260,7 @@ const PlayerDetails = ({ player }) => {
           {player.birthCountry}
         </span>
       </p>
+      {/*
       <p>
         <span>deathYear {player.deathYear}</span>
       </p>

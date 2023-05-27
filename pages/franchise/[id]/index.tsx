@@ -2,7 +2,12 @@ import Image from 'next/image';
 import FetchGraphQL from "@/services/Data/FetchGraphQL";
 import Table from "@/components/Table";
 import { unionWith, isEqual } from 'lodash'
+
+import { HTMLProps, FC, ReactElement } from 'react';
+import  NextLink from 'next/link';
 import Link, { LinkProps } from 'next/link';
+
+
 import { createColumnHelper } from '@tanstack/react-table';
 
 const franchise = ({ franchise }) => {
@@ -15,23 +20,23 @@ const franchise = ({ franchise }) => {
   const { hitters, pitchers } = franchise.roster;
 
   type Player = {
-    // name: LinkProps
-    name: string
+    name: ReactElement<LinkProps>
+    // name: string
     birthday: string
     weight: number
     height: number
     bats: string
     throws: string
-    // bbrefID: LinkProps
+    bbrefID: ReactElement<LinkProps>
   };
     
   const roster: Player[] = unionWith(hitters, pitchers, isEqual)  
     .map(player => {
-      const playerLink = `${player.nameFirst} ${player.nameLast}`;
-      // const playerLink = <Link href={`/player/${player.playerID}`}>{`${player.nameFirst} ${player.nameLast}`}</Link>;
+      // const playerLink = `${player.nameFirst} ${player.nameLast}`;
+      const playerLink = <Link href={`/player/${player.playerID}`}>{`${player.nameFirst} ${player.nameLast}`}</Link>;
       const bday = new Date(player.birthYear, player.birthMonth - 1, player.birthDay);
       const firstLetter = player.bbrefID.charAt(0);
-      // const bbrLink = <Link href={`https://www.baseball-reference.com/players/${firstLetter}/${player.bbrefID}.shtml`}>BBRef</Link>;
+      const bbrLink = <Link href={`https://www.baseball-reference.com/players/${firstLetter}/${player.bbrefID}.shtml`}>BBRef</Link>;
       const newPlayer = {
         name: playerLink,
         birthday: bday.toLocaleDateString('en-us', {year: 'numeric', month: 'short', day: 'numeric'}),
@@ -39,7 +44,7 @@ const franchise = ({ franchise }) => {
         height: player.height,
         bats: player.bats,
         throws: player.throws,
-        // bbrefID: bbrLink,
+        bbrefID: bbrLink,
       }
       return newPlayer;
     })
@@ -68,6 +73,10 @@ const franchise = ({ franchise }) => {
         header: () => <span>Bats</span>,
       }),
       columnHelper.accessor('throws', {
+        cell: info => info.getValue(),
+        header: () => <span>Throws</span>,
+      }),
+      columnHelper.accessor('bbrefID', {
         cell: info => info.getValue(),
         header: () => <span>Throws</span>,
       }),

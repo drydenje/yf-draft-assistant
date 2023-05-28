@@ -4,7 +4,6 @@ import Table from "@/components/Table";
 import { unionWith, isEqual } from 'lodash'
 
 import { HTMLProps, FC, ReactElement } from 'react';
-import  NextLink from 'next/link';
 import Link, { LinkProps } from 'next/link';
 
 
@@ -21,7 +20,6 @@ const franchise = ({ franchise }) => {
 
   type Player = {
     name: ReactElement<LinkProps>
-    // name: string
     birthday: string
     weight: number
     height: number
@@ -32,7 +30,6 @@ const franchise = ({ franchise }) => {
     
   const roster: Player[] = unionWith(hitters, pitchers, isEqual)  
     .map(player => {
-      // const playerLink = `${player.nameFirst} ${player.nameLast}`;
       const playerLink = <Link href={`/player/${player.playerID}`}>{`${player.nameFirst} ${player.nameLast}`}</Link>;
       const bday = new Date(player.birthYear, player.birthMonth - 1, player.birthDay);
       const firstLetter = player.bbrefID.charAt(0);
@@ -81,8 +78,6 @@ const franchise = ({ franchise }) => {
         header: () => <span>Throws</span>,
       }),
     ]
-
-    // console.log(columns[0]);
 
   return (
     <>

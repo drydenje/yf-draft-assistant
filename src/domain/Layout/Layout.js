@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <NavBar />
-      <Header />
+      <Header text="Draft Assistant" />
       <div className={styles.container}>
         {/* <div className={font.className}> */}
         {/* <div className={styles.innerWrapper}> */}

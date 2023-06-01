@@ -1,12 +1,12 @@
-import Head from "next/head";
+// import Head from "next/head";
 
 const Page = () => {
   return(
   <>
-      <Head>
+      {/* <Head>
          <title>Draft Assistant</title>
          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-       </Head>
+       </Head> */}
 
        <h1>A quick overview of this project</h1>
        <h2>A chance to explore technologies</h2>

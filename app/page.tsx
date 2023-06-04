@@ -1,4 +1,10 @@
 // import Head from "next/head";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Draft Assistant',
+  description: 'A program that will show baseball statistics and help you draft a better fantasy team',
+}
 
 const Page = () => {
   return(

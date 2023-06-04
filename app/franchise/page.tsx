@@ -1,4 +1,3 @@
-// import DivisionList from '@/components/DivisionList/DivisionList';
 import LeagueList from '@/components/LeagueList';
 import FetchGraphQL from '@/services/Data/FetchGraphQL'
 
@@ -50,24 +49,24 @@ const Franchise = ({results}) => {
   )
 }
 
-export async function getStaticProps() {
-  const franchiseQuery = `
-  query {
-    activeFranchises {
-      franchID
-      franchName
-      league
-      division
-    }
-  }
-  `;
+// export async function getStaticProps() {
+//   const franchiseQuery = `
+//   query {
+//     activeFranchises {
+//       franchID
+//       franchName
+//       league
+//       division
+//     }
+//   }
+//   `;
 
-  const results = await FetchGraphQL(franchiseQuery);
-  const r = results.data.activeFranchises;
+//   const results = await FetchGraphQL(franchiseQuery);
+//   const r = results.data.activeFranchises;
   
-  return {
-    props: { results: r }
-  }
-}
+//   return {
+//     props: { results: r }
+//   }
+// }
 
 export default Franchise;

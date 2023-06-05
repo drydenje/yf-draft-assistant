@@ -11,7 +11,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "lint": "next lint"
+    "lint": "next lint",
+    "type-check": "tsc"
   },
   "author": "",
   "license": "ISC",

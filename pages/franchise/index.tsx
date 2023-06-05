@@ -1,8 +1,17 @@
 import LeagueList from '@/components/LeagueList';
 import FetchGraphQL from '@/services/Data/FetchGraphQL'
 
-const Franchise = ({results}) => {
-  // console.log(results);
+type Teams = {
+  franchises: {
+    franchID: string,
+    franchName: string,
+    league: "American" | "National",
+    division: "East" | "Central" | "West",
+  }[]
+}
+
+const Franchise = ({franchises}: Teams) => {
+  console.log(franchises);
 
   let leagues = {
       "American": {
@@ -17,7 +26,7 @@ const Franchise = ({results}) => {
       }
     }
 
-  for(const team of results) {
+  for(const team of franchises) {
     const { league, division } = team;
 
     leagues[league] = {
@@ -49,24 +58,24 @@ const Franchise = ({results}) => {
   )
 }
 
-// export async function getStaticProps() {
-//   const franchiseQuery = `
-//   query {
-//     activeFranchises {
-//       franchID
-//       franchName
-//       league
-//       division
-//     }
-//   }
-//   `;
+export async function getStaticProps() {
+  const franchiseQuery = `
+    query {
+      activeFranchises {
+        franchID
+        franchName
+        league
+        division
+      }
+    }
+  `;
 
-//   const results = await FetchGraphQL(franchiseQuery);
-//   const r = results.data.activeFranchises;
+  const results = await FetchGraphQL(franchiseQuery);
+  const r = results.data.activeFranchises;
   
-//   return {
-//     props: { results: r }
-//   }
-// }
+  return {
+    props: { Teams: r }
+  }
+}
 
 export default Franchise;

@@ -1,18 +1,19 @@
 import LeagueList from '@/components/LeagueList';
 import FetchGraphQL from '@/services/Data/FetchGraphQL'
 
-type Teams = {
-  franchises: {
-    franchID: string,
-    franchName: string,
-    league: "American" | "National",
-    division: "East" | "Central" | "West",
-  }[]
+type Franchise = {
+  franchID: string,
+  franchName: string,
+  league: "American" | "National",
+  division: "East" | "Central" | "West",
 }
 
-const Franchise = ({franchises}: Teams) => {
-  console.log(franchises);
+interface FranchiseProps {
+  teams: Franchise[],
+}
 
+const Franchise = ({teams} : FranchiseProps ) => {
+  // console.log(teams);
   let leagues = {
       "American": {
         "East": [],
@@ -26,7 +27,7 @@ const Franchise = ({franchises}: Teams) => {
       }
     }
 
-  for(const team of franchises) {
+  for(const team of teams) {
     const { league, division } = team;
 
     leagues[league] = {
@@ -42,13 +43,12 @@ const Franchise = ({franchises}: Teams) => {
   }
 
   const listLeagues = Object.keys(leagues).map((leagueName, i) => {
-    // console.log(leagues[leagueName]);
     return(
       <ul key={i}>
         <LeagueList divisions={leagues[leagueName]} leagueName={leagueName}/>
       </ul>
     )
-    })
+  })
   
   return (
     <>
@@ -74,7 +74,7 @@ export async function getStaticProps() {
   const r = results.data.activeFranchises;
   
   return {
-    props: { Teams: r }
+    props: { teams: r }
   }
 }
 

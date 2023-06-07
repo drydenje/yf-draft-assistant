@@ -1,5 +1,12 @@
+import { Metadata } from 'next';
+import Layout from '@/domain/Layout/Layout';
 import LeagueList from '@/components/LeagueList';
-import FetchGraphQL from '@/services/Data/FetchGraphQL'
+import FetchGraphQL from '@/services/Data/FetchGraphQL';
+
+export const metadata: Metadata = {
+  title: 'Draft Assistant: MLB Franchises',
+  description: 'A list of all active MLB franchises'
+}
 
 type Franchise = {
   franchID: string,
@@ -51,10 +58,10 @@ const Franchise = ({teams} : FranchiseProps ) => {
   })
   
   return (
-    <>
+    <Layout>
       <h1>Franchises</h1>
       { listLeagues }
-    </>
+    </Layout>
   )
 }
 

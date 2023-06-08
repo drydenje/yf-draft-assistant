@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import Layout from '@/domain/Layout/Layout';
+// import Layout from '@/domain/Layout/Layout';
 import LeagueList from '@/components/LeagueList';
 import FetchGraphQL from '@/services/Data/FetchGraphQL';
 
@@ -58,10 +58,10 @@ const Franchise = ({teams} : FranchiseProps ) => {
   })
   
   return (
-    <Layout>
+    <>
       <h1>Franchises</h1>
       { listLeagues }
-    </Layout>
+    </>
   )
 }
 

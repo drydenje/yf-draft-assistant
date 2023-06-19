@@ -1,10 +1,11 @@
 import { useMemo } from "react";
 import { HeightInFeet } from "@/services/Format/Height";
 import Head from "next/head";
-import Table from "@/components/Table";
+// import Table from "@/components/Table";
 
 const Player = ({ player }) => {
-  const { name } = useMemo(() => player, []);
+  // const { name } = useMemo(() => player, []);
+  const { name } = useMemo(() => player, [player]);
   console.log("Height:", HeightInFeet(72));
   const headings = [
     { Header: "Year", accessor: "yearID" },
@@ -158,7 +159,7 @@ const Player = ({ player }) => {
       </Head>
       <h1>Players</h1>
       <h2>{name}</h2>
-      <Table headings={headings} stats={stats} />
+      {/* <Table headings={headings} stats={stats} /> */}
     </>
   );
 };

@@ -10,18 +10,19 @@
     "export": "next export",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "lint": "next lint",
+    "type-check": "tsc"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "eslint-config-next": "^13.2.3",
+    "@tanstack/react-table": "^8.9.1",
     "graphql": "^15.5.0",
-    "next": "^13.2.3",
+    "next": "^13.4.3",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-table": "^7.8.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.0.7",
@@ -32,6 +33,8 @@
     "@storybook/nextjs": "^7.0.7",
     "@storybook/react": "^7.0.7",
     "@storybook/testing-library": "^0.1.0",
+    "eslint-config-next": "^13.4.4",
+    "eslint-config-prettier": "^8.8.0",
     "storybook": "^7.0.7",
     "storybook-addon-next": "^1.8.0",
     "typescript": "5.0.2"

@@ -1,13 +1,17 @@
 import Image from "next/image";
 import styles from "./Header.module.css";
 
-const Header = () => {
+type HeaderProps = {
+  text: string,
+}
+
+const Header = ({ text }: HeaderProps) => {
   const imagePath = "/assets/test/swan.webp";
   const altText = "Test";
 
   return (
     <header>
-      <h1 className={styles.title}>Header</h1>
+      <h1 className={styles.title}>{text}</h1>
       {/* <Image
         className={styles.image}
         src={imagePath}

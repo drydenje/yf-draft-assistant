@@ -1,10 +1,10 @@
 import Team from "@/components/Team";
 
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import FetchGraphQL from "@/services/Data/FetchGraphQL";
 
 const league = ({ league }) => {
-  const router = useRouter();
+  // const router = useRouter();
   const teams = league.team_list;
   // const { id } = router.query;
   // console.log(league.team_list);

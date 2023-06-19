@@ -1,14 +1,28 @@
 // import styles from "./Table.module.css";
 import React from "react";
-import { useTable, useSortBy } from "react-table";
+import { 
+  createColumnHelper, 
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+  getSortedRowModel,
+} from "@tanstack/react-table";
+import type { ColumnDef } from '@tanstack/react-table';
+// useSortBy
 import styles from './Table.module.css'
 
-type TableData = {
-  headings: {
-    Header: string;
-    accessor: string;
-  }[],
-  stats?: any;
+interface ReactTableProps<T extends object> {
+  data: T[];
+  columns: ColumnDef<T>[];
+}
+
+// type TableData = {
+  // headings: {
+  //   cell: Function,
+  //   header: Function,
+  //   accessorKey: String,
+  // }[],
+  // stats?: any;
   // {
   //   yearID: number,
   //   iG: number,
@@ -29,58 +43,48 @@ type TableData = {
   //   iSF: number,
   //   iGIDP: number,
   // }[],
-  onClickHandler?: Function,
-};
+// };
 
-const Table = ({ headings, stats, onClickHandler=null }: TableData) => {
-  const columns = React.useMemo(() => headings, []);
-  const data = React.useMemo(() => stats, []);
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data }, useSortBy);
+const Table = <T extends object>({ data, columns }: ReactTableProps<T>) => {
+  // const columns = React.useMemo(() => columns, []);
+  // const data = React.useMemo(() => data, []);
+  // const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+  const table =
+    useReactTable({ columns, data, getCoreRowModel: getCoreRowModel()});
 
   return (
     <div className={styles.tableContainer}>
-      <table
-        {...getTableProps()}
-        className={styles.table}
-      >
+      <table className={styles.table}>
         <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th
-                  {...column.getHeaderProps(column.getSortByToggleProps())}
-                >
-                  {column.render("Header")}
-                  <span>
-                    {column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}
-                  </span>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <tr key={headerGroup.id}>
+              {headerGroup.headers.map((header) => (
+                <th key={header.id}>
+                  {header.isPlaceholder
+                    ? null
+                  : flexRender(
+                      header.column.columnDef.header,
+                      header.getContext()
+                  )}
                 </th>
               ))}
             </tr>
           ))}
         </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
-            return (
-              <tr
-                {...row.getRowProps()}
-                onClick={() => (onClickHandler ? onClickHandler(row) : null)}
-              >
-                {row.cells.map((cell) => {
-                  return (
-                    <td
-                      data-cell={cell.column.Header}
-                      {...cell.getCellProps()}
-                    >
-                      {cell.render("Cell")}
-                    </td>
-                  );
-                })}
-              </tr>
-            );
-          })}
+        
+        <tbody>
+          {table.getRowModel().rows.map((row) => (
+            <tr key={row.id}>
+              {row.getVisibleCells().map((cell) => (
+                <td
+                  key={cell.id}
+                  data-cell={cell.getContext().column.id}
+                >
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </td>
+              ))}
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

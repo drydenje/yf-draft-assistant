@@ -1,9 +1,9 @@
 import styles from "./Layout.module.css";
 import { Providers } from "@/context/providers";
 import { oswald, montserrat } from "@/styles/fonts";
-import "@/styles/normalize.css";
-import "@/styles/globals.css";
-import "@/styles/colours.css";
+// import "@/styles/normalize.css";
+// import "@/styles/globals.css";
+// import "@/styles/colours.css";
 
 const Layout = ({ children }) => {
   return (

@@ -6,7 +6,6 @@ import { unionWith, isEqual } from 'lodash'
 import { HTMLProps, FC, ReactElement } from 'react';
 import Link, { LinkProps } from 'next/link';
 
-
 import { createColumnHelper } from '@tanstack/react-table';
 
 const franchise = ({ franchise }) => {

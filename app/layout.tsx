@@ -5,9 +5,9 @@ import NavBar from '@/components/NavBar';
 
 import Layout from "@/domain/Layout";
 // import { oswald, montserrat } from "@/styles/fonts";
-// import "@/styles/normalize.css";
-// import "@/styles/globals.css";
-// import "@/styles/colours.css";
+import "@/styles/normalize.css";
+import "@/styles/globals.css";
+import "@/styles/colours.css";
 
  
 // export const metadata: Metadata = {
